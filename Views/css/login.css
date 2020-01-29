@@ -1,0 +1,41 @@
+html {
+  width: 100%;
+  height: 100%; }
+
+body {
+  font-size: 1em;
+  width: 100%;
+  height: 100%; }
+
+.flex-wrapper {
+  display: flex; }
+  .flex-wrapper.col {
+    flex-direction: column; }
+  .flex-wrapper.row {
+    flex-direction: row; }
+  .flex-wrapper.center {
+    justify-content: center;
+    align-items: center; }
+  .flex-wrapper.space-between {
+    justify-content: space-between; }
+  .flex-wrapper.space-around {
+    justify-content: space-around; }
+  .flex-wrapper.full-height {
+    height: 100%; }
+  .flex-wrapper.full-width {
+    width: 100%; }
+
+.login.lbl {
+  width: 6em; }
+
+.login.ipt {
+  width: 10em; }
+
+.login.btn {
+  width: 4em; }
+
+#login-window {
+  width: 20em;
+  height: 15em;
+  color: white;
+  background-color: #7A4A91; }
