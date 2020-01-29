@@ -1,4 +1,2 @@
 # SoupKitchen
 SoupKitchenGroupProject
-
-test
