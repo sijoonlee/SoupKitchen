@@ -2,6 +2,11 @@
 class Database
 {
     private $conn;
+
+    function __construct($servername="localhost",$username="root", $password=""){
+        $this->connect($servername, $username, $password);
+    }
+
     function connect ($servername="localhost",$username="root", $password=""){
         // Create connection
         $this->conn = new mysqli($servername, $username, $password);
@@ -45,7 +50,7 @@ class Database
 
     
     function disconnect(){
-        mysqli_close();
+        mysqli_close($this->conn);
     }
 }
 
