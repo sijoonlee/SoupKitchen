@@ -1,5 +1,5 @@
 <?php
-class Connection
+class Database
 {
     function connect ($servername="localhost",$username="root", $password=""){
         // Create connection
@@ -11,6 +11,21 @@ class Connection
         }  
         return "Connected successfully";
     } 
+
+    function selectAllFromTable($tableName){        
+        $returnData = array();
+        $sql = "SELECT * FROM $tableName";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {            
+            while($row = $result->fetch_assoc()) {
+                 echo $row["feild"];
+            }
+        } 
+    }
+
+    
+
+
     
     function disconnect(){
         mysqli_close();
