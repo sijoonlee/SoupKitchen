@@ -50,7 +50,7 @@ class Database
 
     
     function disconnect(){
-        mysqli_close();
+        mysqli_close($this->conn);
     }
 }
 
