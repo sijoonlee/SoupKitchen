@@ -13,7 +13,7 @@ class Connection
     } 
     
     function disconnect(){
-        mysqli_close();
+        mysqli_close($conn);
     }
 }
 
