@@ -1,6 +1,12 @@
 $base-font-size:1em;
-$login-window-color:#7A4A91;
-$login-window-font-color:white;
+$login-window-color:#C4B9DE;
+$login-window-font-color:#6A50A7;
+$login-input-box-color:#D9D6E2;
+$login-input-box-active-color:#E8E6ED;
+$login-input-box-border-color:#8F7AC1;
+$login-button-color:#755BB1;
+$login-button-font-color:#E8E6ED;
+$login-button-border-color:#4D3A78;
 
 html
 {
@@ -120,24 +126,64 @@ body
 }
 
 .login-form{
+    color:$login-window-font-color;
+    background-color: $login-window-color;
+    &.title{
+        font-size:1.3em;
+    }
     &.lbl{
+        font-size:1.2em;
         width:6em;
     }
     &.ipt{
+        font-size:1.2em;
         width:10em;
+        padding-left:0.5em;
+        background-color: $login-input-box-color;
+        border:solid 2px $login-window-color;
+        &:hover{
+            background-color: $login-input-box-active-color;
+        }
+        &:focus{
+            background-color: $login-input-box-active-color;
+            outline: solid 2px $login-input-box-border-color;
+        }
+        &:active{
+            background-color: $login-input-box-active-color;
+            outline: solid 2px $login-input-box-border-color;     
+        }
     }
     &.btn{
-        width:4em;
+        font-size:1em;
+        font-weight: 500;
+        color:$login-button-font-color;
+        background-color: $login-button-color;
+        border:solid 1px $login-button-color;
+        width:5.5em;
+        padding-top:0.4em;
+        padding-bottom: 0.4em;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+        &:hover{
+            outline: solid 1px $login-button-border-color;
+            border:solid 1px $login-button-border-color;
+        }
+        &:focus{
+            outline: solid 1px $login-button-border-color;
+            border:solid 1px $login-button-border-color;
+        }
+        &:active{
+            outline: solid 1px $login-button-border-color;
+            border:solid 1px $login-button-border-color;
+        }
+    }
+    &.window{
+        width: 25em;
+        height: 15em;
     }
 }
 
-#login-window
-{
-    width: 20em;
-    height: 15em;
-    color:$login-window-font-color;
-    background-color: $login-window-color;
-}
+
 
 #nav
 {
