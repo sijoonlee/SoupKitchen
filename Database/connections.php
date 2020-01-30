@@ -2,8 +2,8 @@
 class connection
 {
 
-function connect ($servername,$username, $password){
-//    $servername = "localhost";
+function connect ($servername="localhost",$username="root", $password=""){
+// $servername = "localhost";
 // $username = "letsmakeit";
 // $password = "0505";
 
@@ -16,9 +16,9 @@ if ($conn->connect_error) {
 }
 echo "Connected successfully";
 } 
-function disconnect($conn){
-    mysqli_close($conn);
+function disconnect(){
+    mysqli_close();
 }
 }
 
-?>
+ ?>
