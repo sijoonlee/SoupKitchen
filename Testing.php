@@ -9,8 +9,10 @@ $db = new Database();
 //call the connect function 
 echo $db->connect("localhost:3306","root", "mysql");
 //closes the connection.
+$getCols = array("*");
 
-$db->selectColsFromWhere($cols={"*"}, "products","");
+
+echo $db->selectColsFromWhere($getCols, "products","id = 1");
 $db->disconnect();
 
     
