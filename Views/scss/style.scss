@@ -148,10 +148,6 @@ body
             background-color: $login-input-box-active-color;
             outline: solid 2px $login-input-box-border-color;
         }
-        &:active{
-            background-color: $login-input-box-active-color;
-            outline: solid 2px $login-input-box-border-color;     
-        }
     }
     &.btn{
         font-size:1em;

@@ -199,11 +199,6 @@ body {
   outline: solid 2px #8F7AC1;
 }
 
-.login-form.ipt:active {
-  background-color: #E8E6ED;
-  outline: solid 2px #8F7AC1;
-}
-
 .login-form.btn {
   font-size: 1em;
   font-weight: 500;
