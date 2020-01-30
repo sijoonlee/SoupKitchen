@@ -33,17 +33,33 @@ class Database
     /*-----------FUNCTIONS WE NEED----------------------*/     
     /*---------------SELECTS----------------------------*/ 
     // SELECT * from (table name) WHERE (where condition)
-    // SELECT (column name) FROM (table name)
-    // SELECT (column name) FROM (table name) WHERE (where condition)
+    // SELECT (column names) FROM (table name)
+    // SELECT (column names) FROM (table name) WHERE (where condition)
     
-    /*---------------INSERTS----------------------------*/ 
-    // INSERT INTO (table name) VALUES (values array)
+    function selectColsFromWhere($cols=array(), $tableName, $where){
+        
+    }
 
+
+
+    /*---------------INSERTS----------------------------*/ 
+    function insertIntoTableValues($tableName, $values){
+        $sql = "INSERT INTO $tableName VALUES (" . $values .")";
+        $sql = $this->conn->prepare($sql);
+    }
+
+
+    // INSERT INTO (table name) VALUES (values array)
+    
     /*---------------UPDATES----------------------------*/ 
-    // UPDATE (table name) SET (column Name) = (new value) WHERE (where condition)
+    // UPDATE (table name) SET (column Names) = (new value) WHERE (where condition)
 
     /*---------------DELETES----------------------------*/ 
     // DELETE FROM (table name) WHERE (where condition)
+
+
+
+
 
     
     function disconnect(){

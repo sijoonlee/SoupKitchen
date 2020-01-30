@@ -11,7 +11,5 @@ echo $db->connect("localhost:3306","root", "mysql");
 //closes the connection.
 $db->disconnect();
 
-
-
     
 ?>
