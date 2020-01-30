@@ -28,5 +28,5 @@ insert into Products values
 ('VT001', 'tomato', 11, 'vegitable', null),
 ('MCH001', 'chicken legs', 12, 'meat', null),
 ('MCH002', 'chicken breasts', 12, 'meat', null),
-('SP001', 'pepper', 'spice', 12, null),
-('SS001', 'salt', 'spice', 12, null);
+('SP001', 'pepper', 12, 'spice', null),
+('SS001', 'salt', 12, 'spice',  null);
