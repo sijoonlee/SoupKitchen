@@ -3,13 +3,13 @@
 
 /* -----------------------------Example Of How to connect to the database.-------------------------------*/
 //Include the file containing the connection class
-require "Database\Connections.php";
+require "Database\Database.php";
 //Create an instance of the class
-$conn = new Connection();
+$db = new Database();
 //call the connect function 
-echo $conn->connect("localhost","root", "pass");
+echo $db->connect("localhost:3306","root", "mysql");
 //closes the connection.
-$conn->disconnect();
+$db->disconnect();
 
 
 
