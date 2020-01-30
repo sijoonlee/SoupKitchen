@@ -1,24 +1,20 @@
 <?php
-class connection
+class Connection
 {
+    function connect ($servername="localhost",$username="root", $password=""){
+        // Create connection
+        $conn = new mysqli($servername, $username, $password);
 
-function connect ($servername,$username, $password){
-//    $servername = "localhost";
-// $username = "letsmakeit";
-// $password = "0505";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-echo "Connected successfully";
-} 
-function disconnect($conn){
-    mysqli_close($conn);
-}
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }  
+        return "Connected successfully";
+    } 
+    
+    function disconnect(){
+        mysqli_close();
+    }
 }
 
-?>
+ ?>
