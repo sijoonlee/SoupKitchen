@@ -1,13 +1,14 @@
 <?php
 class Database
 {
+    private $conn;
     function connect ($servername="localhost",$username="root", $password=""){
         // Create connection
-        $conn = new mysqli($servername, $username, $password);
+        $this->conn = new mysqli($servername, $username, $password);
 
         // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
+        if ($this->conn->connect_error) {
+            die("Connection failed: " . $this->conn->connect_error);
         }  
         return "Connected successfully";
     } 
@@ -15,7 +16,7 @@ class Database
     function selectAllFromTable($tableName){        
         $returnData = array();
         $sql = "SELECT * FROM $tableName";
-        $result = $conn->query($sql);
+        $result = $this->conn->query($sql);
         if ($result->num_rows > 0) {            
             while($row = $result->fetch_assoc()) {
                  echo $row["feild"];
@@ -23,7 +24,23 @@ class Database
         } 
     }
 
+
+    /*-----------FUNCTIONS WE NEED----------------------*/     
+    /*---------------SELECTS----------------------------*/ 
+    // SELECT * from (table name) WHERE (where condition)
+    // SELECT (column name) FROM (table name)
+    // SELECT (column name) FROM (table name) WHERE (where condition)
     
+    /*---------------INSERTS----------------------------*/ 
+    // INSERT INTO (table name) VALUES (values array)
+
+    /*---------------UPDATES----------------------------*/ 
+    // UPDATE (table name) SET (column Name) = (new value) WHERE (where condition)
+
+    /*---------------DELETES----------------------------*/ 
+    // DELETE FROM (table name) WHERE (where condition)
+
+
 
 
     
