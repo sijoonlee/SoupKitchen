@@ -29,7 +29,6 @@ class Database
         } 
     }
 
-
     /*-----------FUNCTIONS WE NEED----------------------*/     
     /*---------------SELECTS----------------------------*/ 
     // SELECT * from (table name) WHERE (where condition)
@@ -62,10 +61,6 @@ class Database
 
     /*---------------DELETES----------------------------*/ 
     // DELETE FROM (table name) WHERE (where condition)
-
-
-
-
     
     function disconnect(){
         mysqli_close($this->conn);

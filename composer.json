@@ -1,0 +1,13 @@
+{
+    "name": "soup-kitchen",
+    "description": "Soup Kitchen Inventory Application",
+    "authors": [
+        {
+            "name": "Rhatcher94",
+            "email": "49662822+Rhatcher94@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "phroute/phroute": "1.*" 
+    }
+}
