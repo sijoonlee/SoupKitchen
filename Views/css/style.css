@@ -1,3 +1,8 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 html {
   width: 100%;
   height: 100%;
@@ -317,5 +322,49 @@ body {
   padding-right: 0.5em;
   background-color: #755BB1;
   border-color: #6A50A7;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 20%;
+  top: 20%;
+  width: 60%;
+  height: 60%;
+  border: solid 2px #4D3A78;
+}
+
+.modal-header {
+  padding: 1em;
+  font-size: 1.5em;
+  width: 100%;
+  height: 15%;
+  color: #E8E6ED;
+  background-color: #755BB1;
+}
+
+.modal-content {
+  padding: 1em;
+  width: 100%;
+  height: 85%;
+  color: #6A50A7;
+  background-color: #C4B9DE;
+}
+
+.modal-btn-close {
+  font-size: 2em;
+}
+
+.modal-btn-close:hover {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-btn-close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
 /*# sourceMappingURL=style.css.map */

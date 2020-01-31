@@ -9,8 +9,14 @@ $login-button-font-color:#E8E6ED;
 $login-button-border-color:#4D3A78;
 $background-color: #6A50A7;
 
-html
+
+*
 {
+    box-sizing: border-box;
+}
+
+html
+{   
     width:100%;
     height:100%;
 }
@@ -260,4 +266,46 @@ body
     padding-right: 0.5em;
     background-color: $login-button-color;
     border-color: $login-window-font-color;
+}
+
+.modal{
+    display: none;
+    position:fixed;
+    z-index:1;
+    left:20%;
+    top:20%;
+    width:60%;
+    height:60%;
+    border: solid 2px $login-button-border-color;
+}
+
+.modal-header{
+    padding:1em;
+    font-size:1.5em;
+    width:100%;
+    height:15%;
+    color:$login-button-font-color;
+    background-color: $login-button-color;
+}
+
+.modal-content{
+    padding:1em;
+    width:100%;
+    height:85%;
+    color:$login-window-font-color;
+    background-color: $login-window-color;
+}
+
+.modal-btn-close{
+    font-size:2em;
+    &:hover{
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    &:focus{
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
 }
