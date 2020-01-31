@@ -261,7 +261,7 @@ body {
   color: #6A50A7;
   margin-right: 0.5em;
   margin-left: 0.5em;
-  border: #6A50A7 0.2em ridge;
+  border-color: #6A50A7;
 }
 
 .nav-link:hover {
@@ -295,29 +295,31 @@ body {
   background-color: #E8E6ED;
 }
 
-#add-qty {
-  margin-right: 1em;
+.inventory-buttons {
   background-color: #C4B9DE;
   color: #6A50A7;
   border-color: #6A50A7;
 }
 
-#subtract-qty {
+.inventory-buttons.add-qty {
+  margin-right: 1em;
+}
+
+.inventory-buttons.subtract-qty {
   margin-left: 1em;
   padding-right: 0.55em;
   padding-left: 0.55em;
-  background-color: #C4B9DE;
-  color: #6A50A7;
-  border-color: #6A50A7;
 }
 
-#create-new-record {
+.inventory-buttons.create-new-record {
   font-size: 2em;
   padding-top: 0.1em;
   padding-bottom: 0.1em;
   padding-left: 0.5em;
   padding-right: 0.5em;
-  background-color: #755BB1;
-  border-color: #6A50A7;
+}
+
+.inventory-buttons.delete-record {
+  font-size: 2em;
 }
 /*# sourceMappingURL=style.css.map */

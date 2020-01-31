@@ -11,11 +11,11 @@
         <div class="flex-wrapper col flex-start full-height full-width">
             <div class="flex-wrapper row space-between secondary-center" id="nav">
                 <div class="flex-wrapper row flex-start">
-                    <a class="nav-link" href="/inventory.html/">Inventory</a>
-                    <a class="nav-link" href="/history.html">History</a>
+                    <a href="Views/inventory.html/"><button  class="nav-link">Inventory</button></a>
+                    <a href="Views/history.html"><button class="nav-link" >History</button></a>
                 </div>
                 <div class="flex-wrapper row flex-start">
-                    <a class="nav-link" href="/logout.html">Log Out</a>
+                    <a href="/logout.html"><button class="nav-link">Log Out</button></a>
                 </div>
             </div>
             <div class="flex-wrapper col flex-start" id="view">
@@ -25,22 +25,24 @@
                 </div>
                 <div class="flex-wrapper row center" id="list">
                     <div class="grid-wrapper col-num-5 col-gap-7 row-gap-1">
-                        <div class="grid-heading">Id</div>
+                        <div class="grid-heading">ID Number</div>
                         <div class="grid-heading">Type</div>
                         <div class="grid-heading">Name</div>
-                        <div class="grid-heading">Qty</div>
+                        <div class="grid-heading">Quantity</div>
                         <div class="grid-heading create-button">
-                            <button id = "create-new-record">+</button>
+                            <button class = "inventory-buttons create-new-record">+</button>
                         </div>
                         <div class="grid-cell">VP001</div>
                         <div class="grid-cell">vegitable</div>
                         <div class="grid-cell">potato</div>
                         <div class="grid-cell">
-                            <button id = "add-qty">+</button>
+                            <button class = "inventory-buttons add-qty">+</button>
                             <label>10</label>
-                            <button id = "subtract-qty">-</button>
+                            <button class = "inventory-buttons subtract-qty">-</button>
                         </div>
-                        <div class="grid-cell">Btn</div>
+                        <div class="grid-cell">
+                            <button class = "inventory-buttons delete-record">X</button>
+                        </div>
                     </div>
                 </div>
             </div>

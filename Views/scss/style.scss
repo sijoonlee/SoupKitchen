@@ -210,7 +210,7 @@ body
     color: $login-window-font-color;
     margin-right: 0.5em;
     margin-left: 0.5em;
-    border: $login-window-font-color 0.2em ridge;
+    border-color: $login-window-font-color;
 }
 
 #view {
@@ -238,28 +238,26 @@ body
     font-size: 1.5em;
 }
 
-#add-qty {
-    margin-right: 1em;
+.inventory-buttons {
     background-color: $login-window-color;
     color: $login-window-font-color;
     border-color: $login-window-font-color;
-}
-
-#subtract-qty {
-    margin-left: 1em;
-    padding-right: 0.55em;
-    padding-left: 0.55em;
-    background-color: $login-window-color;
-    color: $login-window-font-color;
-    border-color: $login-window-font-color;
-}
-
-#create-new-record {
-    font-size: 2em;
-    padding-top: 0.1em;
-    padding-bottom: 0.1em;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-    background-color: $login-button-color;
-    border-color: $login-window-font-color;
+    &.add-qty {
+        margin-right: 1em;
+    }
+    &.subtract-qty {
+        margin-left: 1em;
+        padding-right: 0.55em;
+        padding-left: 0.55em;
+    }
+    &.create-new-record {
+        font-size: 2em;
+        padding-top: 0.1em;
+        padding-bottom: 0.1em;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+    }
+    &.delete-record {
+        font-size: 2em;
+    }
 }
