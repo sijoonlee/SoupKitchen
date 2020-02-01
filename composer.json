@@ -1,5 +1,5 @@
 {
-    "name": "soup-kitchen",
+    "name": "soupkitchen",
     "description": "Soup Kitchen Inventory Application",
     "authors": [
         {
@@ -8,6 +8,7 @@
         }
     ],
     "require": {
-        "phroute/phroute": "1.*" 
+        "phroute/phroute": "1.*",
+        "klein/klein": "^2.1" 
     }
 }
