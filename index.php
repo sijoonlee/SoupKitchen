@@ -1,6 +1,8 @@
 <?php
 
 $request = $_SERVER['REQUEST_URI'];
+
+//edit this to replace your full path.
 $req = str_replace("/soupkitchen", "", $request);
 
 /* REQUIRES THE .htaccess file */
