@@ -309,3 +309,80 @@ body
         cursor: pointer;
     }
 }
+
+.record-entry-wrapper
+{
+    width:100%;
+    height:100%;
+    display:grid;
+    grid-template-columns: 8% 13% 13% auto auto 8%;
+    grid-template-rows: 8% auto auto auto auto auto 8%;
+}
+
+.record
+{
+    font-size:1.2em;
+    &.picture{
+        grid-column-start: 2;
+        grid-column-end: 4;
+        grid-row-start: 2;
+        grid-row-end: 5;
+        border: solid black 2px;
+    }
+    &.btn-upload{
+        grid-column-start: 2;
+        grid-column-end: 4;
+        grid-row-start: 5;
+        grid-row-end: 6;
+        border: solid black 2px;
+    }
+    &.id{
+        grid-column-start: 4;
+        grid-column-end: 6;
+        grid-row-start: 2;
+        grid-row-end: 3;
+        border: solid black 2px;
+    }
+    &.type{
+        grid-column-start: 4;
+        grid-column-end: 6;
+        grid-row-start: 3;
+        grid-row-end: 4;
+        border: solid black 2px;
+    }
+    &.name{
+        grid-column-start: 4;
+        grid-column-end: 6;
+        grid-row-start: 4;
+        grid-row-end: 5;
+        border: solid black 2px;
+    }
+    &.qty{
+        grid-column-start: 4;
+        grid-column-end: 6;
+        grid-row-start: 5;
+        grid-row-end: 6;
+        border: solid black 2px;
+    }
+    &.btns{
+        font-size:1.2em;
+        grid-column-start: 2;
+        grid-column-end: 6;
+        grid-row-start: 6;
+        grid-row-end: 7;
+        border: solid black 2px;
+    }
+}
+.record>.flex-wrapper>.label{
+    text-align: center;
+    width:25%;
+}
+.record>.flex-wrapper>.entry{
+    width:65%;
+}
+.record>.flex-wrapper>button{
+    font-size:1.1em;
+}
+.record>.flex-wrapper>input{
+    font-size:1.2em;
+}
