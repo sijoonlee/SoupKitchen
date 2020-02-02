@@ -2,6 +2,7 @@
 
 class Router
 {
+  private $ctr = 0;
   private $request;
   private $supportedHttpMethods = array(
     "GET",
@@ -30,13 +31,15 @@ class Router
    * @param route (string)
    */
   private function formatRoute($route)
-  {
-    $route = str_replace("/SoupKitchen","",$route);
+  {    
+    $route = str_replace("/SoupKitchen","",$route);    
     $result = rtrim($route, '/');    
     if ($result === '')
     {
       return '/';
     }
+    $this->ctr ++;
+    
     return $result;
   }
 
@@ -57,7 +60,9 @@ class Router
   {
     $methodDictionary = $this->{strtolower($this->request->requestMethod)};
     $formatedRoute = $this->formatRoute($this->request->requestUri);
+    
     $method = $methodDictionary[$formatedRoute];
+      
 
     if(is_null($method))
     {
