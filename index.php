@@ -3,8 +3,6 @@ include_once 'Controllers/ProductController.php';
 include_once 'Routes/Request.php';
 include_once 'Routes/Router.php';
 $router = new Router(new Request);
-//$accountController = new AccountController();
-
 
 
 $router->get('/', function() {
@@ -30,7 +28,7 @@ $router->get('/products/delete',function(){
     return ProductController::destroy();
 }); 
 
-$router->post('/account', function($request) {  
+$router->post('/products/create', function($request) {  
   return json_encode($request->getBody());
 });
 

@@ -32,7 +32,7 @@ class Router
    */
   private function formatRoute($route)
   {    
-    $route = str_replace("/SoupKitchen","",$route);    
+    $route = str_replace("/soupkitchen","",$route);    
     $result = rtrim($route, '/');    
     if ($result === '')
     {
