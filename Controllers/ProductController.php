@@ -18,9 +18,7 @@ HTML;
     }
 
     static function read(){
-        return <<<HTML
-        <h1>Read Product</h1>        
-HTML;
+        return  include_once dirname(__DIR__).'/Views/inventory.html';
     }
 
     static function edit(){
