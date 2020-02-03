@@ -5,13 +5,14 @@
 //Include the file containing the connection class
 require "Database\Database.php";
 //Create an instance of the class
-$db = new Database();
+$Database = new Database();
 //call the connect function 
-echo $db->connect("localhost:3306","root", "mysql");
+echo $Database->connect("localhost:3306","root", "");
 //closes the connection.
 
-$db->selectColsFromWhere($cols={"*"}, "products","");
-$db->disconnect();
+//$db->selectColsFromWhere($cols={"*"}, "products","");
 
+$DataBase->delete(1,"Products",$where=$id."= 1");
+$Database->disconnect();
     
 ?>
