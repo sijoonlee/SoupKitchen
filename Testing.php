@@ -2,20 +2,16 @@
 /* -----------------------------Example Of How to connect to the database.-------------------------------*/
 //Include the file containing the connection class
 require "Database\Database.php";
-//Create an instance of the class
+//Create an instance of the class\
+
+
 $Database = new Database();
-//call the connect function 
-echo $Database->connect("localhost:3306","root", "");
-//closes the connection.
+echo $Database->connect("localhost:3306","root", "mysql");
+echo "<br>";
+echo $Database->updateTable("SP001","Products", "Product_quantity","10");
+echo $Database->delete("SP001",'product_id','Products');
 
 
-
-$getCols = array("*");
-echo $db->selectColsFromWhere($getCols, "products","id = 1");
-$db->disconnect();
-
-$DataBase->delete(1,"Products",$where=$id."= 1");
-//$DataBase->updateTable("1",)//$id,$tableName, $columnName)
 $Database->disconnect();
 
 ?>
