@@ -3,13 +3,14 @@ class Database
 {
     private $conn;
 
-    function __construct($servername="localhost",$username="root", $password=""){
-        $this->connect($servername, $username, $password);
+    function __construct($servername="",$username="", $password=""){
+        if($servername != "")
+            $this->connect($servername, $username, $password);
     }
 
-    function connect ($servername="localhost",$username="root", $password=""){
+    function connect ($servername="localhost",$username="root", $password="mysql"){
         // Create connection
-        $this->conn = new mysqli($servername, $username, $password);
+        $this->conn = new mysqli($servername, $username, $password,"soupkitchen");
 
         // Check connection
         if ($this->conn->connect_error) {
@@ -66,26 +67,25 @@ class Database
 //     }
     /*---------------UPDATES----------------------------*/ 
     // UPDATE (table name) SET (column Name) = (new value) WHERE (where condition)
-public function updateTable($id,$tableName, $where)
+public function updateTable($id,$tableName, $colName,$newValue)
 {
-    $sql = "UPDATE $tableName SET $where WHERE id=$id";
+    $sql = "UPDATE $tableName SET $colName = '$newValue' WHERE product_id='$id'";    
 
-if ($this->conn->query($sql) === TRUE) {
-    echo "Record updated successfully";
-} else {
-    echo "Error updating record: " . $this->conn->error;
-}
+    if ($this->conn->query($sql) === TRUE) {
+        return "Record updated successfully";
+    } else {
+        return "Error updating record: " . $this->conn->error;
+    }
 }
     /*---------------DELETES----------------------------*/ 
     // DELETE FROM (table name) WHERE (where condition)
-    public function delete($id,$tableName, $where) {
- 
-        $sql = 'DELETE FROM'. $tableName.
-                'WHERE'. $where;
- 
-        $q = $this->pdo->prepare($sql);
- 
-        return $q->execute([$where => $id]);
+    public function delete($id,$tableID,$tableName) { 
+        $sql = "DELETE FROM $tableName WHERE $tableID= '$id'";         
+        if ($this->conn->query($sql) === TRUE) {
+            return "Record deleted successfully";
+        } else {
+            return "Error deleteing record: " . $this->conn->error;
+        }
     }
 
 
