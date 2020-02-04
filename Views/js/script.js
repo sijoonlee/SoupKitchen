@@ -64,7 +64,6 @@ btnSaveNewRecord.addEventListener('click', async ()=>{
         name: document.getElementById('entry-name').value,
         qty: document.getElementById('entry-qty').value,
     }
-    console.log(req);
     await createAnItem(req).then(res => {
         console.log(res);
     })    
