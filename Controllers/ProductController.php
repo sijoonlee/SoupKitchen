@@ -18,9 +18,28 @@ HTML;
     }
 
     static function read(){
-        return <<<HTML
-        <h1>Read Product</h1>        
-HTML;
+        $dataArray = [
+            [
+              "id"   => "VP001",
+              "type" => "vegetable",
+              "name" => "Potato",
+              "qty" => "10"
+            ],
+            [
+              "id"   => "VP002",
+              "type" => "vegetable",
+              "name" => "Potato Small",
+              "qty" => "12"
+            ],
+            [
+              "id"   => "VP003",
+              "type" => "vegetable",
+              "name" => "Potato Large",
+              "qty" => "14"
+            ]
+          ];
+          $dataArray = json_encode($dataArray);
+          return include_once(dirname(__DIR__)."/views/inventory.php");       
     }
 
     static function edit(){

@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="../views/css/style.css">
         <title>Inventory</title>
     </head>
     <body>
@@ -23,6 +23,7 @@
                     <label for = "searchBar">Search</label>
                     <input type = "text" id = "searchBar"/>
                 </div>
+              
                 <div class="flex-wrapper row center" id="list">
                     <div class="grid-wrapper col-num-5 col-gap-7 row-gap-1">
                         <div class="grid-heading">Id</div>
@@ -32,15 +33,27 @@
                         <div class="grid-heading create-button">
                             <button id = "create-new-record">+</button>
                         </div>
-                        <div class="grid-cell">VP001</div>
-                        <div class="grid-cell">vegitable</div>
-                        <div class="grid-cell">potato</div>
+
+                          <?php    
+                    
+                    $dataArray = json_decode($dataArray);
+                    foreach ($dataArray as $data )
+                    {echo<<<HTML
+                        <div class="grid-cell">$data->id</div>
+                        <div class="grid-cell">$data->type</div>
+                        <div class="grid-cell">$data->name</div>
                         <div class="grid-cell">
                             <button class = "add-qty">+</button>
-                            <label>10</label>
+                            <label>$data->qty</label>
                             <button class = "subtract-qty">-</button>
                         </div>
                         <div class="grid-cell">Btn</div>
+HTML;
+                    } 
+                ?>
+
+
+                        
                     </div>
                 </div>
             </div>
