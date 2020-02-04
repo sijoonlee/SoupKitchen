@@ -9,28 +9,23 @@ $login-button-font-color:#E8E6ED;
 $login-button-border-color:#4D3A78;
 $background-color: #6A50A7;
 
-
-*
-{
+* {
     box-sizing: border-box;
 }
 
-html
-{   
+html {   
     width:100%;
     height:100%;
 }
 
-body
-{
+body {
     font-size:$base-font-size;
     width:100%;
     height:100%;
 	background-color: $background-color;
 }
 
-.flex-wrapper
-{
+.flex-wrapper {
     display:flex;
     &.col {
         flex-direction: column;
@@ -38,89 +33,89 @@ body
     &.row {
         flex-direction: row;
     }
-    &.center{
+    &.center {
         justify-content: center;
     }
-    &.space-between{
+    &.space-between {
         justify-content: space-between;
     }
-    &.space-around{
+    &.space-around {
         justify-content: space-around;
     }
-    &.flex-start{
+    &.flex-start {
         justify-content: flex-start;
     }
-    &.flex-end{
+    &.flex-end {
         justify-content: flex-end;
     }
-    &.secondary-center{
+    &.secondary-center {
         align-items: center;
     }
-    &.full-height{
+    &.full-height {
         height:100%;
     }
-    &.full-width{
+    &.full-width {
         width:100%;
     }
 }
 
-.grid-wrapper{
+.grid-wrapper {
     display:grid;
-    &.col-num-1{
+    &.col-num-1 {
         grid-template-columns:auto;
     }
-    &.col-num-2{
+    &.col-num-2 {
         grid-template-columns:auto auto;
     }
-    &.col-num-3{
+    &.col-num-3 {
         grid-template-columns:auto auto auto;
     }
-    &.col-num-4{
+    &.col-num-4 {
         grid-template-columns:auto auto auto auto;
     }
-    &.col-num-5{
+    &.col-num-5 {
         grid-template-columns:auto auto auto auto auto;
     }
-    &.col-num-6{
+    &.col-num-6 {
         grid-template-columns:auto auto auto auto auto auto;
     }
-    &.col-num-7{
+    &.col-num-7 {
         grid-template-columns:auto auto auto auto auto auto auto;
     }
-    &.col-num-8{
+    &.col-num-8 {
         grid-template-columns:auto auto auto auto auto auto auto auto;
     }
-    &.col-gap-p2{
+    &.col-gap-p2 {
         grid-column-gap:0.2em;
     }
-    &.col-gap-p5{
+    &.col-gap-p5 {
         grid-column-gap:0.5em;
     }
-    &.col-gap-1{
+    &.col-gap-1 {
         grid-column-gap:1em;
     }
-    &.col-gap-2{
+    &.col-gap-2 {
         grid-column-gap:2em;
     }
-    &.col-gap-3{
+    &.col-gap-3 {
         grid-column-gap:3em;
     }
     &.col-gap-7 {
         grid-column-gap: 7em;
     }
-    &.row-gap-p2{
+    &.row-gap-p2 {
         grid-row-gap:0.2em;
     }
-    &.row-gap-p5{
+    &.row-gap-p5 {
         grid-row-gap:0.5em;
     }
-    &.row-gap-1{
+    &.row-gap-1 {
         grid-row-gap:1em;
     }
-    &.row-gap-2{
+    &.row-gap-2 {
         grid-row-gap:2em;
     }
-    &.row-gap-3{
+    &.row-gap-3 {
         grid-row-gap:3em;
     }
 }
@@ -141,7 +136,7 @@ body
     }
 } 
 
-.grid-cell{
+.grid-cell {
     display:flex;
     justify-content: center;
     align-items: center;
@@ -156,31 +151,31 @@ body
     }
 }
 
-.login-form{
+.login-form {
     color:$login-window-font-color;
     background-color: $login-window-color;
-    &.title{
+    &.title {
         font-size:1.3em;
     }
-    &.lbl{
+    &.lbl {
         font-size:1.2em;
         width:6em;
     }
-    &.ipt{
+    &.ipt {
         font-size:1.2em;
         width:10em;
         padding-left:0.5em;
         background-color: $login-input-box-color;
         border:solid 2px $login-window-color;
-        &:hover{
+        &:hover {
             background-color: $login-input-box-active-color;
         }
-        &:focus{
+        &:focus {
             background-color: $login-input-box-active-color;
             outline: solid 2px $login-input-box-border-color;
         }
     }
-    &.btn{
+    &.btn {
         font-size:1em;
         font-weight: 500;
         color:$login-button-font-color;
@@ -191,27 +186,26 @@ body
         padding-bottom: 0.4em;
         -webkit-transition-duration: 0.4s; /* Safari */
         transition-duration: 0.4s;
-        &:hover{
+        &:hover {
             outline: solid 1px $login-button-border-color;
             border:solid 1px $login-button-border-color;
         }
-        &:focus{
+        &:focus {
             outline: solid 1px $login-button-border-color;
             border:solid 1px $login-button-border-color;
         }
-        &:active{
+        &:active {
             outline: solid 1px $login-button-border-color;
             border:solid 1px $login-button-border-color;
         }
     }
-    &.window{
+    &.window {
         width: 25em;
         height: 15em;
     }
 }
 
-#nav
-{
+#nav {
     padding:0.2em;
     height:3em;
 }
@@ -222,7 +216,7 @@ body
     padding-top: 0.75em;
     padding-bottom: 0.75em;
     text-decoration: none;
-    &:hover{
+    &:hover {
         text-decoration: none;
     }
     background-color: $login-window-color;
@@ -281,7 +275,7 @@ body
     border-color: $login-window-font-color;
 }
 
-#delete-record{
+#delete-record {
     padding-top: 0.1em;
     padding-bottom: 0.1em;
     padding-left: 0.5em;
@@ -290,7 +284,7 @@ body
     border-color: $login-window-font-color;
 }
 
-.modal{
+.modal {
     display: none;
     position:fixed;
     z-index:1;
@@ -301,7 +295,7 @@ body
     border: solid 2px $login-button-border-color;
 }
 
-.modal-header{
+.modal-header {
     padding:1em;
     font-size:1.5em;
     width:100%;
@@ -310,7 +304,7 @@ body
     background-color: $login-button-color;
 }
 
-.modal-content{
+.modal-content {
     padding:1em;
     width:100%;
     height:85%;
@@ -318,22 +312,21 @@ body
     background-color: $login-window-color;
 }
 
-.modal-btn-close{
+.modal-btn-close {
     font-size:2em;
     &:hover{
         color: #000;
         text-decoration: none;
         cursor: pointer;
     }
-    &:focus{
+    &:focus {
         color: #000;
         text-decoration: none;
         cursor: pointer;
     }
 }
 
-.record-entry-wrapper
-{
+.record-entry-wrapper {
     width:100%;
     height:100%;
     display:grid;
@@ -341,48 +334,47 @@ body
     grid-template-rows: 8% auto auto auto auto auto 8%;
 }
 
-.record
-{
+.record {
     font-size:1.2em;
     border: solid black 0.1em;
     background-color: $background-color;
-    &.picture{
+    &.picture {
         grid-column-start: 2;
         grid-column-end: 4;
         grid-row-start: 2;
         grid-row-end: 5;
     }
-    &.btn-upload{
+    &.btn-upload {
         grid-column-start: 2;
         grid-column-end: 4;
         grid-row-start: 5;
         grid-row-end: 6;
     }
-    &.id{
+    &.id {
         grid-column-start: 4;
         grid-column-end: 6;
         grid-row-start: 2;
         grid-row-end: 3;
     }
-    &.type{
+    &.type {
         grid-column-start: 4;
         grid-column-end: 6;
         grid-row-start: 3;
         grid-row-end: 4;
     }
-    &.name{
+    &.name {
         grid-column-start: 4;
         grid-column-end: 6;
         grid-row-start: 4;
         grid-row-end: 5;
     }
-    &.qty{
+    &.qty {
         grid-column-start: 4;
         grid-column-end: 6;
         grid-row-start: 5;
         grid-row-end: 6;
     }
-    &.btns{
+    &.btns {
         font-size:1.2em;
         grid-column-start: 2;
         grid-column-end: 6;
@@ -390,17 +382,16 @@ body
         grid-row-end: 7;
     }
 }
-.record>.flex-wrapper>.label{
+.record>.flex-wrapper>.label {
     text-align: center;
     width:25%;
 }
-.record>.flex-wrapper>.entry{
+.record>.flex-wrapper>.entry {
     width:65%;
 }
-.record>.flex-wrapper>button{
+.record>.flex-wrapper>button {
     font-size:1.1em;
 }
-.record>.flex-wrapper>input{
+.record>.flex-wrapper>input {
     font-size:1.2em;
 }
-
