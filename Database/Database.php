@@ -34,25 +34,24 @@ class Database
     // SELECT * from (table name) WHERE (where condition)
     // SELECT (column name) FROM (table name)
     // SELECT (column name) FROM (table name) WHERE (where condition)
+    // passing an array and determine how many vatiables to select
+    // function selectColsFromWhere($cols = array(), $tableName, $where)
+    // {
+    //     for($index = 0;$index<$cols.length();$index++ ){
+    //         $columns+=$cols[$index] . ", ";
+    //     }
+    //     $sql = "SELECT $columns FROM $tableName where $where";
+    //     $result = $conn->query($sql);
 
-    function selectColsFromWhere($cols = array(), $tableName, $where)
-    {
-        for($index = 0; $index<$cols.length();$index++){
-            $columns+=$cols[$index] . ", ";
-        }
-        $sql = "SELECT $columns FROM $tableName where $where";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-            // output data of each row
-            while($row = $result->fetch_assoc()) {
-                return $row["field"];
-            }
-        } else {
-            echo "0 results";
-        }
-    }
-    
+    //     if ($result->num_rows > 0) {
+    //         // output data of each row
+    //         while($row = $result->fetch_assoc()) {
+    //             return $row["field"];
+    //         }
+    //     } else {
+    //         echo "0 results";
+    //     }
+    // }
     /*---------------INSERTS----------------------------*/ 
     // INSERT INTO (table name) VALUES (values array)
 //     public function insert($tableName,$cols){
@@ -67,9 +66,30 @@ class Database
 //     }
     /*---------------UPDATES----------------------------*/ 
     // UPDATE (table name) SET (column Name) = (new value) WHERE (where condition)
+public function updateTable($id,$tableName, $where)
+{
+    $sql = "UPDATE $tableName SET $where WHERE id=$id";
 
+if ($conn->query($sql) === TRUE) {
+    echo "Record updated successfully";
+} else {
+    echo "Error updating record: " . $conn->error;
+}
+}
     /*---------------DELETES----------------------------*/ 
     // DELETE FROM (table name) WHERE (where condition)
+    public function delete($id,$tableName, $where) {
+ 
+        $sql = 'DELETE FROM'. $tableName.
+                'WHERE'. $where;
+ 
+        $q = $this->pdo->prepare($sql);
+ 
+        return $q->execute([$where => $id]);
+    }
+
+
+
     
     function disconnect(){
         mysqli_close($this->conn);
