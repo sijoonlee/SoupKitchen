@@ -15,6 +15,7 @@ echo $db->selectColsFromWhere($getCols, "products","id = 1");
 $db->disconnect();
 
 $DataBase->delete(1,"Products",$where=$id."= 1");
+//$DataBase->updateTable("1",)//$id,$tableName, $columnName)
 $Database->disconnect();
-    
+
 ?>

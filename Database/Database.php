@@ -66,9 +66,9 @@ class Database
 //     }
     /*---------------UPDATES----------------------------*/ 
     // UPDATE (table name) SET (column Name) = (new value) WHERE (where condition)
-public function updateTable($id,$tableName, $where)
+public function updateTable($id,$colId,$tableName, $columnName, $newValue)
 {
-    $sql = "UPDATE $tableName SET $where WHERE id=$id";
+    $sql = "UPDATE '$tableName' SET '$columnName' = '$newValue' WHERE '$id' = '$colId'";
 
 if ($this->conn->query($sql) === TRUE) {
     echo "Record updated successfully";
@@ -82,10 +82,12 @@ if ($this->conn->query($sql) === TRUE) {
  
         $sql = 'DELETE FROM'. $tableName.
                 'WHERE'. $where;
- 
-        $q = $this->pdo->prepare($sql);
- 
-        return $q->execute([$where => $id]);
+                if ($this->conn->query($sql) === TRUE) {
+                    echo "Record deleted successfully";
+                } else {
+                    echo "Error deleting record: " . $this->conn->error;
+                }
+                
     }
 
 
