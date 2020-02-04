@@ -15,6 +15,9 @@
                     <a class="nav-link" href="/history.html">History</a>
                 </div>
                 <div class="flex-wrapper row flex-start">
+                    <h1>Inventory Management</h1>
+                </div>
+                <div class="flex-wrapper row flex-start">
                     <a class="nav-link" href="/logout.html">Log Out</a>
                 </div>
             </div>
@@ -24,12 +27,12 @@
                     <input type = "text" id = "searchBar"/>
                 </div>
                 <div class="flex-wrapper row center" id="list">
-                    <div class="grid-wrapper col-num-5 col-gap-7 row-gap-1">
+                    <div class="grid-wrapper col-num-5 col-gap-p5 row-gap-p5">
                         <div class="grid-heading">Id</div>
                         <div class="grid-heading">Type</div>
                         <div class="grid-heading">Name</div>
                         <div class="grid-heading">Qty</div>
-                        <div class="grid-heading create-button">
+                        <div class="grid-heading create-button-inside">
                             <button id = "create-new-record">+</button>
                         </div>
                         <div class="grid-cell">VP001</div>
@@ -40,7 +43,9 @@
                             <label>10</label>
                             <button class = "subtract-qty">-</button>
                         </div>
-                        <div class="grid-cell">Btn</div>
+                        <div class="grid-cell delete-button-inside" >
+                            <button id="delete-record">&times;</button>
+                        </div>
                     </div>
                 </div>
             </div>
