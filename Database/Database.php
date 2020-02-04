@@ -87,9 +87,6 @@ public function updateTable($id,$tableName, $colName,$newValue)
             return "Error deleteing record: " . $this->conn->error;
         }
     }
-
-
-
     
     function disconnect(){
         mysqli_close($this->conn);
