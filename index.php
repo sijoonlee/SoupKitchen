@@ -28,6 +28,8 @@ $router->get('/products/delete',function(){
     return ProductController::destroy();
 }); 
 
+
+
 $router->post('/products/create', function($request) {  
   return json_encode($request->getBody());
 });
