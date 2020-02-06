@@ -39,11 +39,11 @@
                         <div class="grid-cell">vegitable</div>
                         <div class="grid-cell">potato</div>
                         <div class="grid-cell">
-                            <button class = "add-qty">+</button>
+                            <button class = "add-qty" id = "btn-add-qty">+</button>
                             <label>10</label>
                             <button class = "subtract-qty">-</button>
                         </div>
-                        <div class="grid-cell delete-button-inside" >
+                        <div class="grid-cell delete-button-inside">
                             <button id="delete-record">&times;</button>
                         </div>
                     </div>
@@ -100,11 +100,8 @@
                         </div>
                     </div>
                 </div>
-                
-    
             </div>
         </div>
-
     </body>
     <script src="/Views/js/script.js"></script>
 </html>

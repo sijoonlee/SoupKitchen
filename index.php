@@ -32,10 +32,7 @@ $router->get('/products/delete',function(){
     return ProductController::destroy();
 }); 
 
-
-
 $router->post('/products/create', function($request) {
   //return $request->getBody();
   return json_encode($request->getBody());
 });
-
