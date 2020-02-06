@@ -5,8 +5,8 @@ use SoupKitchen;
 drop table if exists Accounts;
 create table Accounts
 (account_id int primary key auto_increment,
-account_username varchar(30) not null,
-account_password varchar(50) not null,
+account_username varchar (30) not null,
+account_password varchar (50) not null,
 account_email varchar(50),
 account_privilage smallint
 );

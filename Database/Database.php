@@ -29,38 +29,38 @@ class Database
         } 
     }
 
-
     /*-----------FUNCTIONS WE NEED----------------------*/     
     /*---------------SELECTS----------------------------*/ 
     // SELECT * from (table name) WHERE (where condition)
-    // SELECT (column names) FROM (table name)
-    // SELECT (column names) FROM (table name) WHERE (where condition)
-    
-    function selectColsFromWhere($cols=array(), $tableName, $where){
-        
+    // SELECT (column name) FROM (table name)
+    // SELECT (column name) FROM (table name) WHERE (where condition)
+
+    function selectColsFromWhere($cols = array(), $tableName, $where)
+    {
+        for($index = 0; $index<$cols.length();$index++){
+            $columns+=$cols[$index] . ", ";
+        }
+        $sql = "SELECT $columns FROM $tableName where $where";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                return $row["field"];
+            }
+        } else {
+            echo "0 results";
+        }
     }
-
-
-
+    
     /*---------------INSERTS----------------------------*/ 
-    function insertIntoTableValues($tableName, $values){
-        $sql = "INSERT INTO $tableName VALUES (" . $values .")";
-        $sql = $this->conn->prepare($sql);
-    }
-
-
     // INSERT INTO (table name) VALUES (values array)
-    
+
     /*---------------UPDATES----------------------------*/ 
-    // UPDATE (table name) SET (column Names) = (new value) WHERE (where condition)
+    // UPDATE (table name) SET (column Name) = (new value) WHERE (where condition)
 
     /*---------------DELETES----------------------------*/ 
     // DELETE FROM (table name) WHERE (where condition)
-
-
-
-
-
     
     function disconnect(){
         mysqli_close($this->conn);
