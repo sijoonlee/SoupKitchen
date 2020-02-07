@@ -5,14 +5,18 @@ include_once 'Routes/Router.php';
 $router = new Router(new Request);
 
 
+// $router->get('/', function() {
+//   return <<<HTML
+//   <h1>Hello world</h1>
+//   <form action="SoupKitchen/account" method="post">
+//     <input type="text" name="name" id="">
+//     <button type="submit">Submit</button>
+//   </form>
+// HTML;
+// });
+
 $router->get('/', function() {
-  return <<<HTML
-  <h1>Hello world</h1>
-  <form action="SoupKitchen/account" method="post">
-    <input type="text" name="name" id="">
-    <button type="submit">Submit</button>
-  </form>
-HTML;
+  require __DIR__ . '/Views/inventory.php';
 });
 
 $router->get('/products',function(){       
@@ -28,7 +32,10 @@ $router->get('/products/delete',function(){
     return ProductController::destroy();
 }); 
 
-$router->post('/products/create', function($request) {  
+
+
+$router->post('/products/create', function($request) {
+  //return $request->getBody();
   return json_encode($request->getBody());
 });
 

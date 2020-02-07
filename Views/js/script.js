@@ -6,7 +6,7 @@ const btnSaveNewRecord = document.querySelector('#btn-save-new-record');
 
 
 
-const APIURL = '/products'
+const APIURL = 'http://localhost:80'
 //import * as apiCalls from './api';
 //  async loadTodos(){
 //     let todos = await apiCalls.getTodos();
@@ -16,7 +16,7 @@ const APIURL = '/products'
 
 const createAnItem = async (newItem={}) => {
   //const token = localStorage.token
-  return fetch(APIURL+'/create', {
+  return fetch(APIURL+'/products/create', {
         method: 'post',
         //withCredentials: true,
         //credentials: 'include',
@@ -38,18 +38,11 @@ const createAnItem = async (newItem={}) => {
           // throw err;
         }
       }
-      result = resp.json()
-      console.log(result)
-      return result
-   }) 
+      return resp.json();
+    })
 }
 
-
-
-
-
 btnCreateNewRecord.addEventListener('click', ()=>{
-    console.log("clicked")
     modal.style.display = 'block';
 });
 
@@ -64,7 +57,6 @@ btnSaveNewRecord.addEventListener('click', async ()=>{
         name: document.getElementById('entry-name').value,
         qty: document.getElementById('entry-qty').value,
     }
-    console.log(req);
     await createAnItem(req).then(res => {
         console.log(res);
     })    

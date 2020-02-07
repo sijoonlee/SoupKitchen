@@ -126,21 +126,34 @@ body
 }
 
 .grid-heading {
+    display:flex;
+    justify-content: center;
+    align-items: center;
     font-size: 1.2em;
-    font-weight: 500;
-    text-align: center;
+    font-weight: 600;
+    width:6em;
+    padding: 1em;
     color: $login-window-color;
     background-color: $login-button-border-color;
-    padding: 1em;
-    &.create-button {
+    &.create-button-inside {
         background-color: $background-color;
         padding: 0em;
     }
-}
+} 
 
 .grid-cell{
+    display:flex;
+    justify-content: center;
+    align-items: center;
     font-size: 1.2em;
     font-weight: 400;
+    width:6em;
+    padding: 0.3em;
+    background-color: $login-window-color;
+    &.delete-button-inside {
+        background-color: $background-color;
+        padding: 0em;
+    }
 }
 
 .login-form{
@@ -268,6 +281,15 @@ body
     border-color: $login-window-font-color;
 }
 
+#delete-record{
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    background-color: $login-button-color;
+    border-color: $login-window-font-color;
+}
+
 .modal{
     display: none;
     position:fixed;
@@ -322,47 +344,43 @@ body
 .record
 {
     font-size:1.2em;
+    border: solid black 0.1em;
+    background-color: $background-color;
     &.picture{
         grid-column-start: 2;
         grid-column-end: 4;
         grid-row-start: 2;
         grid-row-end: 5;
-        border: solid black 2px;
     }
     &.btn-upload{
         grid-column-start: 2;
         grid-column-end: 4;
         grid-row-start: 5;
         grid-row-end: 6;
-        border: solid black 2px;
     }
     &.id{
         grid-column-start: 4;
         grid-column-end: 6;
         grid-row-start: 2;
         grid-row-end: 3;
-        border: solid black 2px;
     }
     &.type{
         grid-column-start: 4;
         grid-column-end: 6;
         grid-row-start: 3;
         grid-row-end: 4;
-        border: solid black 2px;
     }
     &.name{
         grid-column-start: 4;
         grid-column-end: 6;
         grid-row-start: 4;
         grid-row-end: 5;
-        border: solid black 2px;
     }
     &.qty{
         grid-column-start: 4;
         grid-column-end: 6;
         grid-row-start: 5;
         grid-row-end: 6;
-        border: solid black 2px;
     }
     &.btns{
         font-size:1.2em;
@@ -370,7 +388,6 @@ body
         grid-column-end: 6;
         grid-row-start: 6;
         grid-row-end: 7;
-        border: solid black 2px;
     }
 }
 .record>.flex-wrapper>.label{
@@ -386,3 +403,4 @@ body
 .record>.flex-wrapper>input{
     font-size:1.2em;
 }
+

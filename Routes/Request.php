@@ -40,14 +40,27 @@ class Request implements IRequest
 
     if ($this->requestMethod == "POST")
     {
+      $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+      if ($contentType === "application/json") {
+        //Receive the RAW post data.
+        $content = trim(file_get_contents("php://input"));
 
-      $body = array();
-      foreach($_POST as $key => $value)
-      {
-        $body[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
-      }     
-      
-      return $body;
+        $decoded = json_decode($content, true);
+        //If json_decode failed, the JSON is invalid.
+        if(is_array($decoded)) {
+          return $decoded;
+        } else {
+          // Send error back to user.
+          return array("errorMessage"=>"Error occured while parsing body");
+        }
+      }
+      // $body = array();
+      // if(isset($_POST)){
+      //   foreach($_POST as $key => $value)
+      //   {
+      //     $body[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+      //   }
+      //   return $body;
     }
   }
 }
