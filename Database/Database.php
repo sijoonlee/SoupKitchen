@@ -3,13 +3,14 @@ class Database
 {
     private $conn;
 
-    function __construct($servername="localhost",$username="root", $password=""){
-        $this->connect($servername, $username, $password);
+    function __construct($servername="",$username="", $password=""){
+        if($servername != "")
+            $this->connect($servername, $username, $password);
     }
 
-    function connect ($servername="localhost",$username="root", $password=""){
+     function connect ($servername="localhost",$username="root", $password=""){
         // Create connection
-        $this->conn = new mysqli($servername, $username, $password);
+        $this->conn = new mysqli($servername, $username, $password, "soupkitchen");
 
         // Check connection
         if ($this->conn->connect_error) {
@@ -18,15 +19,17 @@ class Database
         return "Connected successfully";
     } 
 
-    function selectAllFromTable($tableName){        
+     function selectAllFromTable($tableName){        
         $returnData = array();
         $sql = "SELECT * FROM $tableName";
         $result = $this->conn->query($sql);
+        $rows = array();
         if ($result->num_rows > 0) {            
             while($row = $result->fetch_assoc()) {
-                 echo $row["feild"];
+                $rows[] = $row;
             }
         } 
+        return json_encode($rows);
     }
 
     /*-----------FUNCTIONS WE NEED----------------------*/     
@@ -35,7 +38,7 @@ class Database
     // SELECT (column name) FROM (table name)
     // SELECT (column name) FROM (table name) WHERE (where condition)
 
-    function selectColsFromWhere($cols = array(), $tableName, $where)
+     function selectColsFromWhere($cols = array(), $tableName, $where)
     {
         for($index = 0; $index<$cols.length();$index++){
             $columns+=$cols[$index] . ", ";
@@ -58,6 +61,19 @@ class Database
 
     /*---------------UPDATES----------------------------*/ 
     // UPDATE (table name) SET (column Name) = (new value) WHERE (where condition)
+
+     function updateAddQty($productID)
+    {
+        $sql = "UPDATE products
+                SET product_quantity=product_quantity+1
+                WHERE product_id='$productID'";
+        if ($this->conn->query($sql) === TRUE) {
+            $returnValue = 1;
+        } else {
+            $returnValue = 0;
+        } 
+        return $returnValue;
+    }
 
     /*---------------DELETES----------------------------*/ 
     // DELETE FROM (table name) WHERE (where condition)

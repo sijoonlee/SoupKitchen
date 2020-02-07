@@ -3,6 +3,27 @@ const btnCreateNewRecord = document.querySelector('#create-new-record');
 const btnCloseModal = document.querySelector('#close-modal-create-new-record');
 const btnSaveNewRecord = document.querySelector('#btn-save-new-record');
 
+const add_buttons = document.querySelectorAll('.add-qty');
+const sub_buttons = document.querySelectorAll('.subtract-qty');
+
+
+add_buttons.forEach(function(currentBtn){
+  currentBtn.addEventListener('click', ()=>{    
+    $.ajax({
+      type: "GET",     
+      url: 'SoupKitchen/index.php',
+      success: function(data){
+          alert(data);
+      }
+  });
+  })
+})
+
+sub_buttons.forEach(function(currentBtn){
+  currentBtn.addEventListener('click', ()=>{
+    alert("Subtract 1 from "+ currentBtn.getAttribute('data-id'));
+  })
+})
 
 
 

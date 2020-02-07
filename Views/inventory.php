@@ -4,15 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<<<<<<< HEAD
-<<<<<<<< HEAD:Views/inventory.php
-        <link rel="stylesheet" href="../views/css/style.css">
-========
-        <link rel="stylesheet" href="/SoupKitchen/css/style.css">
->>>>>>>> upstream/sijoonlee:Views/inventory.html
-=======
-        <link rel="stylesheet" href="/Views/css/style.css">
->>>>>>> upstream/sijoonlee
+        <link rel="stylesheet" href="/SoupKitchen/views/css/style.css">
         <title>Inventory</title>
     </head>
     <body>
@@ -34,10 +26,6 @@
                     <label for = "searchBar">Search</label>
                     <input type = "text" id = "searchBar"/>
                 </div>
-<<<<<<< HEAD
-              
-=======
->>>>>>> upstream/sijoonlee
                 <div class="flex-wrapper row center" id="list">
                     <div class="grid-wrapper col-num-5 col-gap-p5 row-gap-p5">
                         <div class="grid-heading">Id</div>
@@ -47,47 +35,27 @@
                         <div class="grid-heading create-button-inside">
                             <button id = "create-new-record">+</button>
                         </div>
-<<<<<<< HEAD
+<?php 
+                        $dataArray = json_decode($dataArray);
+                        foreach($dataArray as $data){
+                            echo <<< HTML
+                            
+                            <div class="grid-cell">$data->product_id</div>
+                            <div class="grid-cell">$data->product_type</div>
+                            <div class="grid-cell">$data->product_name</div>
+                            <div class="grid-cell">
+                            <button class = "add-qty" data-id=$data->product_id>+</button>
+                            <label>$data->product_quantity</label>
+                            <button class = "subtract-qty" data-id=$data->product_id>-</button>
+                            </div>
+                            <div class="grid-cell delete-button-inside" >
+                                <button id="delete-record">&times;</button>
+                            </div>                       
 
-                          <?php    
-                    
-                    $dataArray = json_decode($dataArray);
-                    foreach ($dataArray as $data )
-                    {echo<<<HTML
-                        <div class="grid-cell">$data->id</div>
-                        <div class="grid-cell">$data->type</div>
-                        <div class="grid-cell">$data->name</div>
-                        <div class="grid-cell">
-                            <button class = "add-qty">+</button>
-                            <label>$data->qty</label>
-                            <button class = "subtract-qty">-</button>
-                        </div>
-<<<<<<<< HEAD:Views/inventory.php
-                        <div class="grid-cell">Btn</div>
 HTML;
-                    } 
-                ?>
-
-
+}
+?>
                         
-========
-                        <div class="grid-cell delete-button-inside" >
-                            <button id="delete-record">&times;</button>
-                        </div>
->>>>>>>> upstream/sijoonlee:Views/inventory.html
-=======
-                        <div class="grid-cell">VP001</div>
-                        <div class="grid-cell">vegitable</div>
-                        <div class="grid-cell">potato</div>
-                        <div class="grid-cell">
-                            <button class = "add-qty">+</button>
-                            <label>10</label>
-                            <button class = "subtract-qty">-</button>
-                        </div>
-                        <div class="grid-cell delete-button-inside" >
-                            <button id="delete-record">&times;</button>
-                        </div>
->>>>>>> upstream/sijoonlee
                     </div>
                 </div>
             </div>
@@ -148,9 +116,6 @@ HTML;
         </div>
 
     </body>
-<<<<<<< HEAD
-    <script src="/SoupKitchen/js/script.js"></script>
-=======
-    <script src="/Views/js/script.js"></script>
->>>>>>> upstream/sijoonlee
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="/SoupKitchen/views/js/script.js"></script>
 </html>

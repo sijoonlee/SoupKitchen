@@ -16,7 +16,7 @@ $router = new Router(new Request);
 // });
 
 $router->get('/', function() {
-  require __DIR__ . '/Views/inventory.php';
+  return ProductController::read();
 });
 
 $router->get('/products',function(){       
@@ -32,10 +32,17 @@ $router->get('/products/delete',function(){
     return ProductController::destroy();
 }); 
 
-
-
 $router->post('/products/create', function($request) {
   //return $request->getBody();
   return json_encode($request->getBody());
 });
+
+  $router->get('/index.php',function(){       
+    return "GOT HERE 2";
+}); 
+
+ 
+
+
+
 
