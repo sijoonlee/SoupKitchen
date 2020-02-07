@@ -3,7 +3,7 @@ const btnCreateNewRecord = document.querySelector('#create-new-record');
 const btnCloseModal = document.querySelector('#close-modal-create-new-record');
 const btnSaveNewRecord = document.querySelector('#btn-save-new-record');
 const btnAddQty = document.querySelector("#btn-add-qty");
-const APIURL = 'http://localhost:80';
+const APIURL = 'http://localhost';
 //import * as apiCalls from './api';
 //  async loadTodos(){
 //     let todos = await apiCalls.getTodos();
@@ -12,6 +12,7 @@ const APIURL = 'http://localhost:80';
 const createAnItem = async (newItem = {}) => {
     //const token = localStorage.token
     return fetch(APIURL + '/products/create', {
+        mode: "no-cors",
         method: 'post',
         //withCredentials: true,
         //credentials: 'include',
