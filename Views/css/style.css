@@ -168,22 +168,48 @@ body {
 }
 
 .grid-heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-size: 1.2em;
-  font-weight: 500;
-  text-align: center;
+  font-weight: 600;
+  width: 6em;
+  padding: 1em;
   color: #C4B9DE;
   background-color: #4D3A78;
-  padding: 1em;
 }
 
-.grid-heading.create-button {
+.grid-heading.create-button-inside {
   background-color: #6A50A7;
   padding: 0em;
 }
 
 .grid-cell {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-size: 1.2em;
   font-weight: 400;
+  width: 6em;
+  padding: 0.3em;
+  background-color: #C4B9DE;
+}
+
+.grid-cell.delete-button-inside {
+  background-color: #6A50A7;
+  padding: 0em;
 }
 
 .login-form {
@@ -324,6 +350,15 @@ body {
   border-color: #6A50A7;
 }
 
+#delete-record {
+  padding-top: 0.1em;
+  padding-bottom: 0.1em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  background-color: #755BB1;
+  border-color: #6A50A7;
+}
+
 .modal {
   display: none;
   position: fixed;
@@ -381,6 +416,8 @@ body {
 
 .record {
   font-size: 1.2em;
+  border: solid black 0.1em;
+  background-color: #6A50A7;
 }
 
 .record.picture {
@@ -390,7 +427,6 @@ body {
   -ms-grid-row: 2;
       grid-row-start: 2;
   grid-row-end: 5;
-  border: solid black 2px;
 }
 
 .record.btn-upload {
@@ -400,7 +436,6 @@ body {
   -ms-grid-row: 5;
       grid-row-start: 5;
   grid-row-end: 6;
-  border: solid black 2px;
 }
 
 .record.id {
@@ -410,7 +445,6 @@ body {
   -ms-grid-row: 2;
       grid-row-start: 2;
   grid-row-end: 3;
-  border: solid black 2px;
 }
 
 .record.type {
@@ -420,7 +454,6 @@ body {
   -ms-grid-row: 3;
       grid-row-start: 3;
   grid-row-end: 4;
-  border: solid black 2px;
 }
 
 .record.name {
@@ -430,7 +463,6 @@ body {
   -ms-grid-row: 4;
       grid-row-start: 4;
   grid-row-end: 5;
-  border: solid black 2px;
 }
 
 .record.qty {
@@ -440,7 +472,6 @@ body {
   -ms-grid-row: 5;
       grid-row-start: 5;
   grid-row-end: 6;
-  border: solid black 2px;
 }
 
 .record.btns {
@@ -451,7 +482,6 @@ body {
   -ms-grid-row: 6;
       grid-row-start: 6;
   grid-row-end: 7;
-  border: solid black 2px;
 }
 
 .record > .flex-wrapper > .label {
