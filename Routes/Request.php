@@ -51,7 +51,7 @@ class Request implements IRequest
           return $decoded;
         } else {
           // Send error back to user.
-          return array("errorMessage"=>"Error occured while parsing body");
+          return array("message"=>"Error occured while parsing body");
         }
       }
       // $body = array();

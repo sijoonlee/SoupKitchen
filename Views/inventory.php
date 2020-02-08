@@ -27,26 +27,6 @@
                     <input type = "text" id = "searchBar"/>
                 </div>
                 <div class="flex-wrapper row center" id="list">
-                    <div class="grid-wrapper col-num-5 col-gap-p5 row-gap-p5">
-                        <div class="grid-heading">Id</div>
-                        <div class="grid-heading">Type</div>
-                        <div class="grid-heading">Name</div>
-                        <div class="grid-heading">Qty</div>
-                        <div class="grid-heading create-button-inside">
-                            <button id = "create-new-record">+</button>
-                        </div>
-                        <div class="grid-cell">VP001</div>
-                        <div class="grid-cell">vegitable</div>
-                        <div class="grid-cell">potato</div>
-                        <div class="grid-cell">
-                            <button class = "add-qty" id = "btn-add-qty">+</button>
-                            <label>10</label>
-                            <button class = "subtract-qty">-</button>
-                        </div>
-                        <div class="grid-cell delete-button-inside">
-                            <button id="delete-record">&times;</button>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="modal" id="modal-create-new-record">
@@ -103,5 +83,5 @@
             </div>
         </div>
     </body>
-    <script src="/Views/js/script.js"></script>
+    <script src="/Views/js/inventory.js"></script>
 </html>
