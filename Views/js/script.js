@@ -3,6 +3,41 @@ const btnCreateNewRecord = document.querySelector('#create-new-record');
 const btnCloseModal = document.querySelector('#close-modal-create-new-record');
 const btnSaveNewRecord = document.querySelector('#btn-save-new-record');
 
+const add_buttons = document.querySelectorAll('.add-qty');
+const sub_buttons = document.querySelectorAll('.subtract-qty');
+
+
+add_buttons.forEach(function(currentBtn){
+  currentBtn.addEventListener('click', ()=>{    
+    $.ajax({
+      url: '/products/updateQty',
+      dataType: 'json',
+      type: 'post',
+      contentType: 'application/json',
+      data: JSON.stringify( { "product_id": currentBtn.getAttribute('data-id'), "product_quantity": parseInt(currentBtn.getAttribute('data-qty'))+1} ),
+      processData: false,
+      success: function( data){
+          alert( JSON.stringify(data));
+      }      
+  });
+  })
+})
+
+sub_buttons.forEach(function(currentBtn){
+  currentBtn.addEventListener('click', ()=>{
+    $.ajax({
+      url: '/products/updateQty',
+      dataType: 'json',
+      type: 'post',
+      contentType: 'application/json',
+      data: JSON.stringify( { "product_id": currentBtn.getAttribute('data-id'), "product_quantity": parseInt(currentBtn.getAttribute('data-qty'))-1} ),
+      processData: false,
+      success: function( data){
+          alert( JSON.stringify( data ) );
+      }      
+  });
+  })
+})
 
 
 

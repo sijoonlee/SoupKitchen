@@ -1,6 +1,6 @@
 <?php 
-class ProductController{    
-    
+require "Database\Database.php";
+class ProductController{  
     static function index(){
         return <<<HTML
         <h1>Products</h1>
@@ -18,35 +18,25 @@ HTML;
     }
 
     static function read(){
-        $dataArray = [
-            [
-              "id"   => "VP001",
-              "type" => "vegetable",
-              "name" => "Potato",
-              "qty" => "10"
-            ],
-            [
-              "id"   => "VP002",
-              "type" => "vegetable",
-              "name" => "Potato Small",
-              "qty" => "12"
-            ],
-            [
-              "id"   => "VP003",
-              "type" => "vegetable",
-              "name" => "Potato Large",
-              "qty" => "14"
-            ]
-          ];
-          $dataArray = json_encode($dataArray);
-          return include_once(dirname(__DIR__)."/views/inventory.php");       
+        $db = new Database("localhost:3306","root", "mysql");      
+        $dataArray = $db->selectAllFromTable("Products");          
+        $db->disconnect();
+        return include_once(dirname(__DIR__)."/views/inventory.php");       
     }
 
-    static function edit(){
+    static function edit(){       
         return <<<HTML
         <h1>Edit Product</h1>       
 HTML;
     }
+
+    static function updateQty($product){
+        $db = new Database("localhost:3306","root", "mysql");      
+             
+       
+        return $product;
+    }
+
 
     static function destroy(){
         return <<<HTML
