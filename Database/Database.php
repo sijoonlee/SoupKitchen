@@ -8,7 +8,7 @@ class Database
             $this->connect($servername, $username, $password);
     }
 
-    function connect ($servername="localhost",$username="root", $password="mysql"){
+    function connect ($servername="localhost",$username="root", $password=""){
         // Create connection
         $this->conn = new mysqli($servername, $username, $password,"soupkitchen");
 
@@ -54,17 +54,19 @@ class Database
     //     }
     // }
     /*---------------INSERTS----------------------------*/ 
-    // INSERT INTO (table name) VALUES (values array)
-//     public function insert($tableName,$cols){
-// $sql = "INSERT INTO MyGuests (firstname, lastname, email)
-//    VALUES ('John', 'Doe', 'john@example.com')";
+    public function insertValues($tableName,$cols = array()){
+        for($index = 0;$index<var_dump(count($cols));$index++ ){
+                    $columns+=$cols[$index] . ", ";
+                }
+$sql = "INSERT INTO $tableName (firstname, lastname, email)
+   VALUES ('John', 'Doe', 'john@example.com')";
 
-// if ($conn->query($sql) === TRUE) {
-//     echo "New record created successfully";
-// } else {
-//     echo "Error: " . $sql . "<br>" . $conn->error;
-// }
-//     }
+if ($this->conn->query($sql) === TRUE) {
+    return "Record updated successfully";
+} else {
+    return "Error updating record: " . $this->conn->error;
+}
+    }
     /*---------------UPDATES----------------------------*/ 
     // UPDATE (table name) SET (column Name) = (new value) WHERE (where condition)
 public function updateTable($id,$tableName, $colName,$newValue)
