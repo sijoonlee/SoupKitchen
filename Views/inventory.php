@@ -4,19 +4,14 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<<<<<<< HEAD:Views/inventory.html
         <link rel="stylesheet" href="../views/css/style.css">
-=======
-<<<<<<< HEAD
-<<<<<<<< HEAD:Views/inventory.php
+
         <link rel="stylesheet" href="../views/css/style.css">
-========
+
         <link rel="stylesheet" href="/SoupKitchen/css/style.css">
->>>>>>>> upstream/sijoonlee:Views/inventory.html
-=======
+
         <link rel="stylesheet" href="/Views/css/style.css">
->>>>>>> upstream/sijoonlee
->>>>>>> dc12706766a29c0854bf2f722c523d4530e0f0ad:Views/inventory.php
+
         <title>Inventory</title>
     </head>
     <body>
@@ -38,10 +33,7 @@
                     <label for = "searchBar">Search</label>
                     <input type = "text" id = "searchBar"/>
                 </div>
-<<<<<<< HEAD
-              
-=======
->>>>>>> upstream/sijoonlee
+
                 <div class="flex-wrapper row center" id="list">
                     <div class="grid-wrapper col-num-5 col-gap-p5 row-gap-p5">
                         <div class="grid-heading">Id</div>
@@ -51,7 +43,7 @@
                         <div class="grid-heading create-button-inside">
                             <button id = "create-new-record">+</button>
                         </div>
-<<<<<<< HEAD
+
 
                           <?php    
                     
@@ -66,20 +58,17 @@
                             <label>$data->qty</label>
                             <button class = "subtract-qty">-</button>
                         </div>
-<<<<<<<< HEAD:Views/inventory.php
+
                         <div class="grid-cell">Btn</div>
 HTML;
                     } 
-                ?>
+                ?>                       
 
-
-                        
-========
                         <div class="grid-cell delete-button-inside" >
                             <button id="delete-record">&times;</button>
                         </div>
->>>>>>>> upstream/sijoonlee:Views/inventory.html
-=======
+
+
                         <div class="grid-cell">VP001</div>
                         <div class="grid-cell">vegitable</div>
                         <div class="grid-cell">potato</div>
@@ -98,16 +87,15 @@ HTML;
                             <label>10</label>
                             <button class = "subtract-qty">-</button>
                         </div>
-<<<<<<< HEAD:Views/inventory.html
+
                         
                         <div class="grid-cell">Btn</div>
 
-=======
+
                         <div class="grid-cell delete-button-inside" >
                             <button id="delete-record">&times;</button>
                         </div>
->>>>>>> upstream/sijoonlee
->>>>>>> Views/inventory.php
+
                     </div>
                 </div>
             </div>
@@ -168,9 +156,9 @@ HTML;
         </div>
 
     </body>
-<<<<<<< HEAD
+
     <script src="/SoupKitchen/js/script.js"></script>
-=======
+
     <script src="/Views/js/script.js"></script>
->>>>>>> upstream/sijoonlee
+
 </html>

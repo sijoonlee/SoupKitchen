@@ -16,7 +16,7 @@ $router = new Router(new Request);
 // });
 
 $router->get('/', function() {
-  require __DIR__ . '/Views/inventory.php';
+  return ProductController::read();
 });
 
 $router->get('/products',function(){       
