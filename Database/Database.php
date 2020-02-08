@@ -58,8 +58,8 @@ class Database
         for($index = 0;$index<var_dump(count($cols));$index++ ){
                     $columns+=$cols[$index] . ", ";
                 }
-$sql = "INSERT INTO $tableName (firstname, lastname, email)
-   VALUES ('John', 'Doe', 'john@example.com')";
+$sql = "INSERT INTO $tableName 
+   VALUES $columns";
 
 if ($this->conn->query($sql) === TRUE) {
     return "Record updated successfully";
