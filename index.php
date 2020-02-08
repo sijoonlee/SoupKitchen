@@ -37,9 +37,11 @@ $router->post('/products/create', function($request) {
   return json_encode($request->getBody());
 });
 
-  $router->get('/index.php',function(){       
-    return "GOT HERE 2";
-}); 
+ $router->post('/products/updateQty', function($request){  
+  $data = json_encode($request->getBody());  
+  return ProductController::updateQty($data);
+ 
+ }); 
 
  
 

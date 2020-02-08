@@ -20,6 +20,7 @@ HTML;
     static function read(){
         $db = new Database("localhost:3306","root", "mysql");      
         $dataArray = $db->selectAllFromTable("Products");          
+        $db->disconnect();
         return include_once(dirname(__DIR__)."/views/inventory.php");       
     }
 
@@ -29,9 +30,11 @@ HTML;
 HTML;
     }
 
-    static function addQty($productID){
-      $db = new Database("localhost:3306","root", "mysql");      
-      $db->updateAddQty($productID);
+    static function updateQty($product){
+        $db = new Database("localhost:3306","root", "mysql");      
+             
+       
+        return $product;
     }
 
 

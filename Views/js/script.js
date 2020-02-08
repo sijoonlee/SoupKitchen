@@ -10,18 +10,32 @@ const sub_buttons = document.querySelectorAll('.subtract-qty');
 add_buttons.forEach(function(currentBtn){
   currentBtn.addEventListener('click', ()=>{    
     $.ajax({
-      type: "GET",     
-      url: 'SoupKitchen/index.php',
-      success: function(data){
-          alert(data);
-      }
+      url: '/products/updateQty',
+      dataType: 'json',
+      type: 'post',
+      contentType: 'application/json',
+      data: JSON.stringify( { "product_id": currentBtn.getAttribute('data-id'), "product_quantity": parseInt(currentBtn.getAttribute('data-qty'))+1} ),
+      processData: false,
+      success: function( data){
+          alert( JSON.stringify(data));
+      }      
   });
   })
 })
 
 sub_buttons.forEach(function(currentBtn){
   currentBtn.addEventListener('click', ()=>{
-    alert("Subtract 1 from "+ currentBtn.getAttribute('data-id'));
+    $.ajax({
+      url: '/products/updateQty',
+      dataType: 'json',
+      type: 'post',
+      contentType: 'application/json',
+      data: JSON.stringify( { "product_id": currentBtn.getAttribute('data-id'), "product_quantity": parseInt(currentBtn.getAttribute('data-qty'))-1} ),
+      processData: false,
+      success: function( data){
+          alert( JSON.stringify( data ) );
+      }      
+  });
   })
 })
 

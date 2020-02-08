@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="/SoupKitchen/views/css/style.css">
+        <link rel="stylesheet" href="/views/css/style.css">
         <title>Inventory</title>
     </head>
     <body>
@@ -44,9 +44,9 @@
                             <div class="grid-cell">$data->product_type</div>
                             <div class="grid-cell">$data->product_name</div>
                             <div class="grid-cell">
-                            <button class = "add-qty" data-id=$data->product_id>+</button>
+                            <button class = "add-qty" data-id=$data->product_id data-qty=$data->product_quantity>+</button>
                             <label>$data->product_quantity</label>
-                            <button class = "subtract-qty" data-id=$data->product_id>-</button>
+                            <button class = "subtract-qty" data-id=$data->product_id data-qty=$data->product_quantity>-</button>
                             </div>
                             <div class="grid-cell delete-button-inside" >
                                 <button id="delete-record">&times;</button>
@@ -109,13 +109,11 @@ HTML;
                             </div>
                         </div>
                     </div>
-                </div>
-                
-    
+                </div>   
             </div>
         </div>
 
     </body>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="/SoupKitchen/views/js/script.js"></script>
+    <script src="/views/js/script.js"></script>
 </html>

@@ -62,17 +62,16 @@ class Database
     /*---------------UPDATES----------------------------*/ 
     // UPDATE (table name) SET (column Name) = (new value) WHERE (where condition)
 
-     function updateAddQty($productID)
+     function updateQty($productID,$newQty)
     {
         $sql = "UPDATE products
-                SET product_quantity=product_quantity+1
-                WHERE product_id='$productID'";
+                SET product_quantity=$newQty
+                WHERE product_id='$productID'";       
         if ($this->conn->query($sql) === TRUE) {
-            $returnValue = 1;
+            echo "Record Updated";
         } else {
-            $returnValue = 0;
-        } 
-        return $returnValue;
+            echo "Error updating record: " . $conn->error;
+        }        
     }
 
     /*---------------DELETES----------------------------*/ 
