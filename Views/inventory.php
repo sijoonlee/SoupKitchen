@@ -50,51 +50,19 @@
                     $dataArray = json_decode($dataArray);
                     foreach ($dataArray as $data )
                     {echo<<<HTML
-                        <div class="grid-cell">$data->id</div>
-                        <div class="grid-cell">$data->type</div>
-                        <div class="grid-cell">$data->name</div>
+                        <div class="grid-cell">$data->product_id</div>
+                        <div class="grid-cell">$data->product_type</div>
+                        <div class="grid-cell">$data->product_name</div>
                         <div class="grid-cell">
-                            <button class = "add-qty">+</button>
-                            <label>$data->qty</label>
+                            <button class = "add-qty" data-id=$data->product_id data-qty=$data->product_quantity>+</button>
+                            <label>$data->product_quantity</label>
                             <button class = "subtract-qty">-</button>
                         </div>
 
-                        <div class="grid-cell">Btn</div>
+                        <div class="grid-cell">Btn</div>                       
 HTML;
                     } 
-                ?>                       
-
-                        <div class="grid-cell delete-button-inside" >
-                            <button id="delete-record">&times;</button>
-                        </div>
-
-
-                        <div class="grid-cell">VP001</div>
-                        <div class="grid-cell">vegitable</div>
-                        <div class="grid-cell">potato</div>
-                        <div class="grid-cell">
-                            <button class = "add-qty">+</button>
-                            <label>10</label>
-                            <button class = "subtract-qty">-</button>
-                        </div>                        
-                        <div class="grid-cell">Btn</div>
-                        
-                        <div class="grid-cell">VP001</div>
-                        <div class="grid-cell">vegitable</div>
-                        <div class="grid-cell">potato</div>
-                        <div class="grid-cell">
-                            <button class = "add-qty">+</button>
-                            <label>10</label>
-                            <button class = "subtract-qty">-</button>
-                        </div>
-
-                        
-                        <div class="grid-cell">Btn</div>
-
-
-                        <div class="grid-cell delete-button-inside" >
-                            <button id="delete-record">&times;</button>
-                        </div>
+                ?>     
 
                     </div>
                 </div>
