@@ -419,8 +419,6 @@ body {
 
 .record {
   font-size: 1.2em;
-  border: solid black 0.1em;
-  background-color: #6A50A7;
 }
 
 .record.picture {
@@ -430,6 +428,7 @@ body {
   -ms-grid-row: 2;
       grid-row-start: 2;
   grid-row-end: 5;
+  border: solid black 2px;
 }
 
 .record.btn-upload {
@@ -439,6 +438,7 @@ body {
   -ms-grid-row: 5;
       grid-row-start: 5;
   grid-row-end: 6;
+  border: solid black 2px;
 }
 
 .record.id {
@@ -448,6 +448,7 @@ body {
   -ms-grid-row: 2;
       grid-row-start: 2;
   grid-row-end: 3;
+  border: solid black 2px;
 }
 
 .record.type {
@@ -457,6 +458,7 @@ body {
   -ms-grid-row: 3;
       grid-row-start: 3;
   grid-row-end: 4;
+  border: solid black 2px;
 }
 
 .record.name {
@@ -466,6 +468,7 @@ body {
   -ms-grid-row: 4;
       grid-row-start: 4;
   grid-row-end: 5;
+  border: solid black 2px;
 }
 
 .record.qty {
@@ -475,6 +478,7 @@ body {
   -ms-grid-row: 5;
       grid-row-start: 5;
   grid-row-end: 6;
+  border: solid black 2px;
 }
 
 .record.btns {
@@ -485,6 +489,7 @@ body {
   -ms-grid-row: 6;
       grid-row-start: 6;
   grid-row-end: 7;
+  border: solid black 2px;
 }
 
 .record > .flex-wrapper > .label {
