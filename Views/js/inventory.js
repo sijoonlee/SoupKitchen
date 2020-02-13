@@ -9,8 +9,10 @@ const btnUpdateRecord = document.querySelector('#btn-update-record');
 const btnDeleteRecord = document.querySelector('#btn-delete-record');
 const btnCloseUpdateRecord = document.querySelector('#btn-close-update-record');
 
+const btnUploadPic = document.querySelector('#btn-upload-pic');
 
 const listGrid = document.querySelector('#list');
+
 
 
 
@@ -209,6 +211,29 @@ const updateList = async () => {
 
 window.addEventListener('load', async (event) => {
   await updateList();
+
+  btnUploadPic.addEventListener('change', ()=>{
+  
+    if(btnUploadPic.files && btnUploadPic.files[0]){
+      // console.log(btnUploadPic.files);
+        // FileList [ File ]
+      // console.log(btnUploadPic.files[0]); 
+        // File { name: "photo-736230.jpeg", lastModified: 1581556990000, webkitRelativePath: "", size: 27768, type: "image/jpeg" }
+      let img = document.querySelector('#new-itme-pic');
+      img.src = URL.createObjectURL(btnUploadPic.files[0]);    
+      console.log(img.src)
+      base64 = btnUploadPic.files[0].convertToBase64
+
+      let result;
+      let reader = new FileReader();
+      reader.onloadend = function() {
+        result = reader.result
+        console.log('RESULT', reader.result) // data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD
+        
+      }
+      reader.readAsDataURL(btnUploadPic.files[0]);
+    }
+  });
   
   btnCloseUpdateRecord.addEventListener('click', ()=>{
     modalUpdateRecord.style.display = 'none';
