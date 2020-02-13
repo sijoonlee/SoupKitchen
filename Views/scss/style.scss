@@ -298,9 +298,9 @@ body
     position:fixed;
     z-index:1;
     left:20%;
-    top:20%;
+    top:10%;
     width:60%;
-    height:60%;
+    height:80%;
     border: solid 2px $login-button-border-color;
 }
 
@@ -354,7 +354,11 @@ body
         grid-column-end: 4;
         grid-row-start: 2;
         grid-row-end: 5;
-    }
+        border: solid black 2px;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+  }
     &.btn-upload{
         grid-column-start: 2;
         grid-column-end: 4;
@@ -407,3 +411,12 @@ body
     font-size:1.2em;
 }
 
+.entry{
+    &.pic{
+        display:block;
+        width:auto;
+        max-height:25vh;
+        
+    }
+
+}
