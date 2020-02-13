@@ -1,8 +1,18 @@
-const modal = document.querySelector('#modal-create-new-record');
-const btnCloseModal = document.querySelector('#close-modal-create-new-record');
+const modalNewRecord = document.querySelector('#modal-create-new-record');
+const btnCloseModalNewRecord = document.querySelector('#close-modal-create-new-record');
 const btnSaveNewRecord = document.querySelector('#btn-save-new-record');
 const btnCloseNewRecord = document.querySelector('#btn-close-new-record');
+
+const modalUpdateRecord = document.querySelector('#modal-update-record');
+const btnCloseModalUpdateRecord = document.querySelector('#close-modal-update-record');
+const btnUpdateRecord = document.querySelector('#btn-update-record');
+const btnDeleteRecord = document.querySelector('#btn-delete-record');
+const btnCloseUpdateRecord = document.querySelector('#btn-close-update-record');
+
+const btnUploadPic = document.querySelector('#btn-upload-pic');
+
 const listGrid = document.querySelector('#list');
+
 
 
 
@@ -143,11 +153,12 @@ const generateList = (data) => {
             <label>${item.product_quantity}</label>
             <button class = "subtract-qty" data-id=${item.product_id} data-qty=${item.product_quantity}>-</button>
         </div>
-        <div class="grid-cell delete-button-inside" >
-            <button class="delete-record" data-id=${item.product_id}>&times;</button>
+        <div class="grid-cell update-button-inside" >
+            <button class="update-record" id=${item.product_id}
+                    data-id=${item.product_id} data-type=${item.product_type} 
+                    data-name=${item.product_name} data-qty=${item.product_quantity}>&#x26B2;</button>
         </div>`;
         grid += list;
-        
     });
     grid += '</div>';
     return grid;
@@ -157,9 +168,20 @@ const generateList = (data) => {
 const updateList = async () => {
   data = await getAllItem();
   listGrid.innerHTML = generateList(data);
-  document.querySelector('#create-new-record').addEventListener('click', ()=>{
-    modal.style.display = 'block';
+
+  document.querySelectorAll('.update-record').forEach( currentBtn => {
+    currentBtn.addEventListener('click', ()=>{
+      document.querySelector('#target-id').value = currentBtn.getAttribute('data-id');
+      document.querySelector('#target-type').value = currentBtn.getAttribute('data-type');
+      document.querySelector('#target-name').value = currentBtn.getAttribute('data-name');
+      document.querySelector('#target-qty').value = currentBtn.getAttribute('data-qty');
+      modalUpdateRecord.style.display = 'block';
+    });
   });
+  document.querySelector('#create-new-record').addEventListener('click', ()=>{
+    modalNewRecord.style.display = 'block';
+  });
+  
   
   document.querySelectorAll('.add-qty').forEach( (currentBtn) => {
     currentBtn.addEventListener('click', async ()=>{    
@@ -189,13 +211,44 @@ const updateList = async () => {
 
 window.addEventListener('load', async (event) => {
   await updateList();
+
+  btnUploadPic.addEventListener('change', ()=>{
   
-  btnCloseModal.addEventListener('click', ()=>{
-    modal.style.display = 'none';
+    if(btnUploadPic.files && btnUploadPic.files[0]){
+      // console.log(btnUploadPic.files);
+        // FileList [ File ]
+      // console.log(btnUploadPic.files[0]); 
+        // File { name: "photo-736230.jpeg", lastModified: 1581556990000, webkitRelativePath: "", size: 27768, type: "image/jpeg" }
+      let img = document.querySelector('#new-itme-pic');
+      img.src = URL.createObjectURL(btnUploadPic.files[0]);    
+      console.log(img.src)
+      base64 = btnUploadPic.files[0].convertToBase64
+
+      let result;
+      let reader = new FileReader();
+      reader.onloadend = function() {
+        result = reader.result
+        console.log('RESULT', reader.result) // data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD
+        
+      }
+      reader.readAsDataURL(btnUploadPic.files[0]);
+    }
+  });
+  
+  btnCloseUpdateRecord.addEventListener('click', ()=>{
+    modalUpdateRecord.style.display = 'none';
+  });
+
+  btnCloseModalUpdateRecord.addEventListener('click', ()=> {
+    modalUpdateRecord.style.display = 'none';
+  });
+
+  btnCloseModalNewRecord.addEventListener('click', ()=>{
+    modalNewRecord.style.display = 'none';
   });
 
   btnCloseNewRecord.addEventListener('click', ()=>{
-    modal.style.display = 'none';
+    modalNewRecord.style.display = 'none';
   });
 
   btnSaveNewRecord.addEventListener('click', async ()=>{
@@ -205,12 +258,41 @@ window.addEventListener('load', async (event) => {
         product_name: document.getElementById('entry-name').value,
         product_quantity: document.getElementById('entry-qty').value,
     }
+
     await createAnItem(req).then(res => {
         console.log(res);
-    })
+    });
+
     await updateList();
   })
 
+
+  btnUpdateRecord.addEventListener('click', async ()=>{
+    req = {
+        product_id: document.getElementById('target-id').value,
+        product_type: document.getElementById('target-type').value,
+        product_name: document.getElementById('target-name').value,
+        product_quantity: document.getElementById('target-qty').value,
+    }
+
+    await updateAnItem(req).then(res => {
+        console.log(res);
+    });
+
+    await updateList();
+  })
+
+  btnDeleteRecord.addEventListener('click', async ()=>{
+    req = {
+        product_id: document.getElementById('target-id').value
+    }
+
+    await deleteAnItem(req).then(res => {
+        console.log(res);
+    });
+
+    await updateList();
+  })
 
 });
 

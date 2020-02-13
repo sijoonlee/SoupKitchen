@@ -207,7 +207,7 @@ body {
   background-color: #C4B9DE;
 }
 
-.grid-cell.delete-button-inside {
+.grid-cell.update-button-inside {
   background-color: #6A50A7;
   padding: 0em;
 }
@@ -346,15 +346,18 @@ body {
   padding-bottom: 0.1em;
   padding-left: 0.5em;
   padding-right: 0.5em;
+  color: #C4B9DE;
   background-color: #755BB1;
   border-color: #6A50A7;
 }
 
-.delete-record {
+.update-record {
+  font-size: 1.3em;
   padding-top: 0.1em;
   padding-bottom: 0.1em;
   padding-left: 0.5em;
   padding-right: 0.5em;
+  color: #C4B9DE;
   background-color: #755BB1;
   border-color: #6A50A7;
 }
@@ -364,9 +367,9 @@ body {
   position: fixed;
   z-index: 1;
   left: 20%;
-  top: 20%;
+  top: 10%;
   width: 60%;
-  height: 60%;
+  height: 80%;
   border: solid 2px #4D3A78;
 }
 
@@ -427,6 +430,16 @@ body {
   -ms-grid-row: 2;
       grid-row-start: 2;
   grid-row-end: 5;
+  border: solid black 2px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .record.btn-upload {
@@ -499,5 +512,11 @@ body {
 
 .record > .flex-wrapper > input {
   font-size: 1.2em;
+}
+
+.entry.pic {
+  display: block;
+  width: auto;
+  max-height: 25vh;
 }
 /*# sourceMappingURL=style.css.map */
