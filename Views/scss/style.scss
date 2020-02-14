@@ -347,6 +347,8 @@ body
 .record
 {
     font-size:1.2em;
+    border: solid black 0.1em;
+    background-color: $background-color;
     &.picture{
         grid-column-start: 2;
         grid-column-end: 4;
@@ -356,41 +358,36 @@ body
         display:flex;
         align-items: center;
         justify-content: center;
-    }
+  }
     &.btn-upload{
         grid-column-start: 2;
         grid-column-end: 4;
         grid-row-start: 5;
         grid-row-end: 6;
-        border: solid black 2px;
     }
     &.id{
         grid-column-start: 4;
         grid-column-end: 6;
         grid-row-start: 2;
         grid-row-end: 3;
-        border: solid black 2px;
     }
     &.type{
         grid-column-start: 4;
         grid-column-end: 6;
         grid-row-start: 3;
         grid-row-end: 4;
-        border: solid black 2px;
     }
     &.name{
         grid-column-start: 4;
         grid-column-end: 6;
         grid-row-start: 4;
         grid-row-end: 5;
-        border: solid black 2px;
     }
     &.qty{
         grid-column-start: 4;
         grid-column-end: 6;
         grid-row-start: 5;
         grid-row-end: 6;
-        border: solid black 2px;
     }
     &.btns{
         font-size:1.2em;
@@ -398,7 +395,6 @@ body
         grid-column-end: 6;
         grid-row-start: 6;
         grid-row-end: 7;
-        border: solid black 2px;
     }
 }
 .record>.flex-wrapper>.label{
