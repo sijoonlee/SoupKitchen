@@ -8,7 +8,7 @@ class Database
             $this->connect($servername, $username, $password);
     }
 
-     function connect ($servername="localhost",$username="root", $password=""){
+     function connect ($servername="localhost",$username="root", $password="mysql"){
         // Create connection
         $this->conn = new mysqli($servername, $username, $password, "SoupKitchen");
 
@@ -73,6 +73,27 @@ class Database
             echo "Error updating record: " . $conn->error;
         }        
     }
+
+    //Data order: ID, TYPE, NAME, QUANTITY
+    function updateProducts($oldID , $data = array()){
+        $sql = "UPDATE products
+                SET 
+                product_id= '". $data["product_id"].
+               "', product_type= '" .$data["product_type"].
+               "', product_name= '" . $data["product_name"].
+               "', product_quantity= " . $data["product_quantity"].
+               ", product_image= '" . $data["product_image"].
+               "' WHERE product_id='$oldID'";
+        var_dump($sql);
+
+            if ($this->conn->query($sql) === TRUE) {
+                return 1;
+            } else {
+                return 0;
+            }  
+
+    }
+
 
     /*---------------DELETES----------------------------*/ 
     // DELETE FROM (table name) WHERE (where condition)

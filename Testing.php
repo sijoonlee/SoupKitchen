@@ -15,9 +15,11 @@ $getCols = array("*");
 
 $testArray = array(
     "product_id" => "SP001",
+    "product_type" => "Plant",  
     "product_name" => "NewName",
-    "product_quantity" => "10",
-    "product_type" => "Plant",    
+    "product_quantity" => "111",
+    "product_image" => "askhgdajgdjaksdgagdkhagskdajsdadgkahgdahshdahsgddahsdhas"
+      
 );
 echo $db->updateProducts("SP001",$testArray);
 $db->disconnect();
