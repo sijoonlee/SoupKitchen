@@ -57,7 +57,44 @@ class Database
     }
     
     /*---------------INSERTS----------------------------*/ 
-    // INSERT INTO (table name) VALUES (values array)
+
+    /***************************************************
+        Format for $newRecord array for insertNewRecord
+        $newRecord = array(
+            "product_id" => product ID
+            "product_name" => product name
+            "product_quantity" => product qty
+            "product_type" => type of product
+            "product_image" => image file stored as BLOB
+        );
+    ***************************************************/
+    function insertNewRecord($tableName, $newRecord)
+    {
+        $stmt = $this->conn->prepare("
+            INSERT INTO $tableName VALUES
+            (?, ?, ?, ?, ?);
+        ");
+        $stmt->bind_param("ssisb", 
+            $newRecord["product_id"], 
+            $newRecord["product_name"], 
+            $newRecord["product_quantity"],
+            $newRecord["product_type"],
+            $newRecord["product_image"]
+        );
+        try
+        {
+            if (!$stmt->execute())
+            {
+                throw new Exception("Failed to insert new record", 69);
+            }
+        }
+        catch (Exception $ex)
+        {
+            $errMsg = "Error #" . $ex->getCode() . ": " . $ex->getMessage();
+        }
+        $errMsg = "New record inserted successfully";
+        return $errMsg;
+    }
 
     /*---------------UPDATES----------------------------*/ 
     // UPDATE (table name) SET (column Name) = (new value) WHERE (where condition)
