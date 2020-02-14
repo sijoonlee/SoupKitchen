@@ -18,7 +18,7 @@ HTML;
     }
 
     static function read(){
-        $db = new Database("localhost:3306","root", "");      
+        $db = new Database("localhost:3306","root", "mysql");      
         $dataArray = $db->selectAllFromTable("Products");          
         $db->disconnect();
         return $dataArray;
@@ -32,7 +32,7 @@ HTML;
     }
 
     static function updateQty($product){
-        $db = new Database("localhost:3306","root", "");      
+        $db = new Database("localhost:3306","root", "mysql");      
              
        
         return $product;

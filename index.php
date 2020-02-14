@@ -16,6 +16,7 @@ $router = new Router(new Request);
 // });
 $router->get('/', function() {
   require __DIR__ . '/Views/inventory.php';
+  //return ProductController::read();
 });
 
 $router->get('/login', function() {
@@ -36,7 +37,7 @@ $router->get('/products',function(){
 $router->get('/products/create',function(){       
     return ProductController::create();
 }); 
-$router->get('/products/edit',function(){       
+$router->get('/products/edit',function(){        
     return ProductController::edit();
 }); 
 $router->get('/products/delete',function(){       
