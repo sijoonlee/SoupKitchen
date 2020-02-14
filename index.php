@@ -14,9 +14,20 @@ $router = new Router(new Request);
 //   </form>
 // HTML;
 // });
-
 $router->get('/', function() {
   return ProductController::read();
+});
+
+$router->get('/login', function() {
+  require __DIR__ . '/Views/login.php';
+});
+
+$router->get('/inventory', function() {
+  require __DIR__ . '/Views/inventory.php';
+});
+
+$router->get('/history', function() {
+  require __DIR__ . '/Views/history.php';
 });
 
 $router->get('/products',function(){       
@@ -32,19 +43,14 @@ $router->get('/products/delete',function(){
     return ProductController::destroy();
 }); 
 
-$router->post('/products/create', function($request) {
-  //return $request->getBody();
-  return json_encode($request->getBody());
-});
-
- $router->post('/products/updateQty', function($request){  
+$router->post('/products/updateQty', function($request){  
   $data = json_encode($request->getBody());  
   return ProductController::updateQty($data);
  
  }); 
-
- 
-
-
-
-
+$router->post('/products/create', function($request) {
+  // ProductController::test();
+  // return json_encode($request->getBody());
+  $data = json_encode($request->getBody());  
+  return ProductController::updateQty($data);
+});

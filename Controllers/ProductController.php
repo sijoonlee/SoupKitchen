@@ -1,10 +1,10 @@
 <?php 
-require "Database\Database.php";
+require dirname(__DIR__)."/Database/Database.php";
 class ProductController{  
     static function index(){
         return <<<HTML
         <h1>Products</h1>
-        <form action="SoupKitchen/account" method="post">
+        <form action="/account" method="post">
           <input type="text" name="name" id="">
           <button type="submit">Submit</button>
         </form>
@@ -18,10 +18,11 @@ HTML;
     }
 
     static function read(){
-        $db = new Database("localhost:3306","root", "mysql");      
+        $db = new Database("localhost:3306","root", "");      
         $dataArray = $db->selectAllFromTable("Products");          
         $db->disconnect();
-        return include_once(dirname(__DIR__)."/views/inventory.php");       
+        return $dataArray;
+        //return include_once(dirname(__DIR__)."/Views/inventory.php");       
     }
 
     static function edit(){       
@@ -31,7 +32,7 @@ HTML;
     }
 
     static function updateQty($product){
-        $db = new Database("localhost:3306","root", "mysql");      
+        $db = new Database("localhost:3306","root", "");      
              
        
         return $product;

@@ -10,7 +10,7 @@ class Database
 
      function connect ($servername="localhost",$username="root", $password=""){
         // Create connection
-        $this->conn = new mysqli($servername, $username, $password, "soupkitchen");
+        $this->conn = new mysqli($servername, $username, $password, "SoupKitchen");
 
         // Check connection
         if ($this->conn->connect_error) {
@@ -61,21 +61,6 @@ class Database
 
     /*---------------UPDATES----------------------------*/ 
     // UPDATE (table name) SET (column Name) = (new value) WHERE (where condition)
-
-    function updateProducts($oldID, $dataArray = array()){
-        $sql = "UPDATE products
-                SET 
-                    product_id = "+$dataArray['product_id']+",
-                    product_name =" +$dataArray['product_name']+",
-                    product_quantity= " + $dataArray['product_quantity']+",
-                    product_type = " + $dataArray['product_type']+",                    
-                WHERE product_id='$oldID'";
-        echo "sql is " + $sql;
-           
-    }
-
-
-
 
      function updateQty($productID,$newQty)
     {
