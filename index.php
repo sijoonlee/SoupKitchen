@@ -43,6 +43,11 @@ $router->get('/products/delete',function(){
     return ProductController::destroy();
 }); 
 
+$router->post('/products/updateAnItem',function($request){
+  $data = $request->getBody();
+  return ProductController::updateAnItem($data["product_id"], $data);
+}); 
+
 $router->post('/products/updateQty', function($request){  
   $data = json_encode($request->getBody());  
   return ProductController::updateQty($data);
@@ -52,5 +57,5 @@ $router->post('/products/create', function($request) {
   // ProductController::test();
   // return json_encode($request->getBody());
   $data = json_encode($request->getBody());  
-  return ProductController::updateQty($data);
+  return $data;
 });

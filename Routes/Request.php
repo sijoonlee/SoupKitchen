@@ -44,7 +44,7 @@ class Request implements IRequest
       if ($contentType === "application/json") {
         //Receive the RAW post data.
         $content = trim(file_get_contents("php://input"));
-
+        
         $decoded = json_decode($content, true);
         //If json_decode failed, the JSON is invalid.
         if(is_array($decoded)) {

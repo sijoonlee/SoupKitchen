@@ -8,7 +8,7 @@ class Database
             $this->connect($servername, $username, $password);
     }
 
-     function connect ($servername="localhost",$username="root", $password=""){
+     function connect ($servername="localhost",$username="root", $password="mysql"){
         // Create connection
         $this->conn = new mysqli($servername, $username, $password, "SoupKitchen");
 
@@ -64,7 +64,7 @@ class Database
 
      function updateQty($productID,$newQty)
     {
-        $sql = "UPDATE products
+        $sql = "UPDATE Products
                 SET product_quantity=$newQty
                 WHERE product_id='$productID'";       
         if ($this->conn->query($sql) === TRUE) {
@@ -73,6 +73,29 @@ class Database
             echo "Error updating record: " . $conn->error;
         }        
     }
+
+    //Data order: ID, TYPE, NAME, QUANTITY
+    function updateProducts($oldID , $data = array()){
+        $sql = "UPDATE Products
+                SET " .
+                (isset($data["product_id"]) ? "product_id= '" . $data["product_id"] . "'," : "") .
+                (isset($data["product_type"]) ? "product_type= '" . $data["product_type"] . "'," : "") .
+                (isset($data["product_name"]) ? "product_name= '" . $data["product_name"] . "'," : "") .
+                (isset($data["product_quantity"]) ? "product_quantity= '" . $data["product_quantity"] . "'," : "") .
+                (isset($data["product_image"]) ? "product_image= '" . $data["product_image"] . "'," : "");
+        $sql = rtrim($sql, ","); // delete unnecesarry comma at the end
+        $sql = $sql . " WHERE product_id='$oldID'";
+       
+            if ($this->conn->query($sql) === TRUE) {
+                return $data;
+            } else {
+                // var_dump($sql);
+                // var_dump($this->conn);
+                return 0;
+            }  
+
+    }
+
 
     /*---------------DELETES----------------------------*/ 
     // DELETE FROM (table name) WHERE (where condition)
