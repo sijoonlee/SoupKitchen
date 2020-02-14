@@ -11,7 +11,15 @@ echo $db->connect("localhost:3306","root", "mysql");
 
 
 $getCols = array("*");
-echo $db->selectColsFromWhere($getCols, "products","id = 1");
+//echo $db->selectColsFromWhere($getCols, "products","id = 1");
+
+$testArray = array(
+    "product_id" => "SP001",
+    "product_name" => "NewName",
+    "product_quantity" => "10",
+    "product_type" => "Plant",    
+);
+echo $db->updateProducts("SP001",$testArray);
 $db->disconnect();
 
     
