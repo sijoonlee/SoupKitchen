@@ -105,7 +105,7 @@
                         <div class="record id">
                             <div class="flex-wrapper row flex-start secondary-center full-width full-height">
                                 <div class="label id">Id</div>
-                                <input class="entry id" id="target-id"/>
+                                <input class="entry id" id="target-id" readonly/>
                             </div>
                         </div>
                         <div class="record type">

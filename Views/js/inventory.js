@@ -106,16 +106,45 @@ const updateAnItem = async (item={}) => {
     })
 }
 
-const deleteAnItem = async (product_id) => {
+const deleteAnItem = async (item) => {
   //const token = localStorage.token
-  return fetch(APIURL+'/products/delete?product_id=' + product_id, {
-        method: 'get',
+  return fetch(APIURL+'/products/delete', {
+        method: 'post',
         //withCredentials: true,
         //credentials: 'include',
         headers: new Headers({
         'Content-Type': 'application/json',
         //'Authorization': 'Bearer ' + token
-        })
+        }),
+        body: JSON.stringify(item)
+    })
+    .then(resp => {
+      if(!resp.ok) {
+        if(resp.status >=400 && resp.status < 500) {
+          resp.json().then(data => {
+            return {message: data.message};
+            // throw err;
+          })
+        } else {
+          return {message: 'Please try again later, server is not responding'};
+          // throw err;
+        }
+      }
+      return resp.json();
+    })
+}
+
+const findAnItem = async (item) => {
+  //const token = localStorage.token
+  return fetch(APIURL+'/products/findById', {
+        method: 'post',
+        //withCredentials: true,
+        //credentials: 'include',
+        headers: new Headers({
+        'Content-Type': 'application/json',
+        //'Authorization': 'Bearer ' + token
+        }),
+        body: JSON.stringify(item)
     })
     .then(resp => {
       if(!resp.ok) {
@@ -170,7 +199,18 @@ const updateList = async () => {
   listGrid.innerHTML = generateList(data);
 
   document.querySelectorAll('.update-record').forEach( currentBtn => {
-    currentBtn.addEventListener('click', ()=>{
+    currentBtn.addEventListener('click', async ()=>{
+      const dataFromDb = await findAnItem({product_id:currentBtn.getAttribute('data-id')});
+      console.log(dataFromDb.product_image)
+      let img = document.querySelector('#target-item-pic');
+      // let reader = new FileReader();
+      // reader.onloadend = function() {
+      //   img.src = reader.result
+      // }
+      if(dataFromDb.product_image)
+        img.src = dataFromDb.product_image;
+      else
+        img.src = "";
       document.querySelector('#target-id').value = currentBtn.getAttribute('data-id');
       document.querySelector('#target-type').value = currentBtn.getAttribute('data-type');
       document.querySelector('#target-name').value = currentBtn.getAttribute('data-name');
@@ -223,12 +263,8 @@ window.addEventListener('load', async (event) => {
       //img.src = URL.createObjectURL(btnUploadPic.files[0]);    
       //console.log(img.src)
 
-      let result;
       let reader = new FileReader();
       reader.onloadend = function() {
-        result = reader.result
-        console.log('RESULT', reader.result) // data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD
-        //var image = new Image();
         img.src = reader.result
       }
       reader.readAsDataURL(btnUploadNewPic.files[0]);
@@ -243,16 +279,13 @@ window.addEventListener('load', async (event) => {
         // FileList [ File ]
       // console.log(btnUploadPic.files[0]); 
         // File { name: "photo-736230.jpeg", lastModified: 1581556990000, webkitRelativePath: "", size: 27768, type: "image/jpeg" }
+      
       let img = document.querySelector('#target-item-pic');
-      //img.src = URL.createObjectURL(btnUploadPic.files[0]);    
-      //console.log(img.src)
 
-      let result;
       let reader = new FileReader();
       reader.onloadend = function() {
-        result = reader.result
-        console.log('RESULT', reader.result) // data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD
-        //var image = new Image();
+        // result = reader.result
+        // console.log('RESULT', reader.result) // data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD
         img.src = reader.result
       }
       reader.readAsDataURL(btnUploadTargetPic.files[0]);
