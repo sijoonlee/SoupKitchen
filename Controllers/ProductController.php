@@ -1,6 +1,14 @@
 <?php 
 require dirname(__DIR__)."/Database/Database.php";
-class ProductController{  
+class ProductController{
+
+#################### CONSTANT #######################
+    static $address = "localhost:3306";
+    static $account = "root";
+    static $password = "";
+    static $tableProducts = "Products";
+#####################################################
+
     static function index(){
         return <<<HTML
         <h1>Products</h1>
@@ -11,40 +19,46 @@ class ProductController{
 HTML;
     }
 
-    static function create(){
-        return <<<HTML
-        <h1>Create Product</h1>        
-HTML;
+    static function create($data){
+        $db = new Database(self::$address,self::$account, self::$password);      
+        $dataArray = $db->insertNewProduct(self::$tableProducts, $data);          
+        $db->disconnect();
+        return json_encode($dataArray);
     }
 
     static function read(){
-        $db = new Database("localhost:3306","root", "mysql");      
-        $dataArray = $db->selectAllFromTable("Products");          
+        $db = new Database(self::$address,self::$account, self::$password);      
+        $dataArray = $db->selectAllFromTable(self::$tableProducts);          
         $db->disconnect();
-        return $dataArray;
+        return json_encode($dataArray);
         //return include_once(dirname(__DIR__)."/Views/inventory.php");       
     }
 
-    static function updateAnItem($oldId, $dataArray){       
-        $db = new Database("localhost:3306", "root", "mysql");
+    static function updateAnProduct($oldId, $dataArray){       
+        $db = new Database(self::$address,self::$account, self::$password);
         $result = $db->updateProducts($oldId,$dataArray);
-        if($result!==0)
-            $result = json_encode($result);
         $db->disconnect();
-        return $result;
+        return json_encode($result);
     }
 
-    static function updateQty($product){
-        $db = new Database("localhost:3306","root", "mysql");      
-        
-        return $product;
+    // No longer used from Frontend
+    // static function updateQty($product){
+    //     $db = new Database("localhost:3306","root", "mysql");      
+    //     return $product;
+    // }
+
+    static function findAProductById($id){
+        $db = new Database(self::$address,self::$account, self::$password);
+        $result = $db->findAProductById(self::$tableProducts, $id);
+        $db->disconnect();
+        return json_encode($result);
     }
 
-
-    static function destroy(){
-        return <<<HTML
-        <h1>Destroy Product</h1>        
-HTML;
+    static function deleteAnProduct($id){
+        $db = new Database(self::$address,self::$account, self::$password);
+        $result = $db->deleteAnProductById(self::$tableProducts, $id);
+        $db->disconnect();
+        return json_encode($result);
     }
 
 
