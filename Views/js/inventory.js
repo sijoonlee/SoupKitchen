@@ -9,8 +9,8 @@ const btnUpdateRecord = document.querySelector('#btn-update-record');
 const btnDeleteRecord = document.querySelector('#btn-delete-record');
 const btnCloseUpdateRecord = document.querySelector('#btn-close-update-record');
 
-const btnUploadPic = document.querySelector('#btn-upload-pic');
-
+const btnUploadNewPic = document.querySelector('#btn-upload-new-pic');
+const btnUploadTargetPic = document.querySelector('#btn-upload-target-pic');
 const listGrid = document.querySelector('#list');
 
 
@@ -80,7 +80,7 @@ const getAllItem = async () => {
 
 const updateAnItem = async (item={}) => {
   //const token = localStorage.token
-  return fetch(APIURL+'/products/updateQty', {
+  return fetch(APIURL+'/products/updateAnItem', {
         method: 'post',
         //withCredentials: true,
         //credentials: 'include',
@@ -106,16 +106,45 @@ const updateAnItem = async (item={}) => {
     })
 }
 
-const deleteAnItem = async (product_id) => {
+const deleteAnItem = async (item) => {
   //const token = localStorage.token
-  return fetch(APIURL+'/products/delete?product_id=' + product_id, {
-        method: 'get',
+  return fetch(APIURL+'/products/delete', {
+        method: 'post',
         //withCredentials: true,
         //credentials: 'include',
         headers: new Headers({
         'Content-Type': 'application/json',
         //'Authorization': 'Bearer ' + token
-        })
+        }),
+        body: JSON.stringify(item)
+    })
+    .then(resp => {
+      if(!resp.ok) {
+        if(resp.status >=400 && resp.status < 500) {
+          resp.json().then(data => {
+            return {message: data.message};
+            // throw err;
+          })
+        } else {
+          return {message: 'Please try again later, server is not responding'};
+          // throw err;
+        }
+      }
+      return resp.json();
+    })
+}
+
+const findAnItem = async (item) => {
+  //const token = localStorage.token
+  return fetch(APIURL+'/products/findById', {
+        method: 'post',
+        //withCredentials: true,
+        //credentials: 'include',
+        headers: new Headers({
+        'Content-Type': 'application/json',
+        //'Authorization': 'Bearer ' + token
+        }),
+        body: JSON.stringify(item)
     })
     .then(resp => {
       if(!resp.ok) {
@@ -154,9 +183,9 @@ const generateList = (data) => {
             <button class = "subtract-qty" data-id=${item.product_id} data-qty=${item.product_quantity}>-</button>
         </div>
         <div class="grid-cell update-button-inside" >
-            <button class="update-record" id=${item.product_id}
-                    data-id=${item.product_id} data-type=${item.product_type} 
-                    data-name=${item.product_name} data-qty=${item.product_quantity}>&#x26B2;</button>
+            <button class="update-record" id="${item.product_id}"
+                    data-id="${item.product_id}" data-type="${item.product_type}"
+                    data-name="${item.product_name}" data-qty="${item.product_quantity}">&#x26B2;</button>
         </div>`;
         grid += list;
     });
@@ -170,7 +199,18 @@ const updateList = async () => {
   listGrid.innerHTML = generateList(data);
 
   document.querySelectorAll('.update-record').forEach( currentBtn => {
-    currentBtn.addEventListener('click', ()=>{
+    currentBtn.addEventListener('click', async ()=>{
+      const dataFromDb = await findAnItem({product_id:currentBtn.getAttribute('data-id')});
+      console.log(dataFromDb.product_image)
+      let img = document.querySelector('#target-item-pic');
+      // let reader = new FileReader();
+      // reader.onloadend = function() {
+      //   img.src = reader.result
+      // }
+      if(dataFromDb.product_image)
+        img.src = dataFromDb.product_image;
+      else
+        img.src = "";
       document.querySelector('#target-id').value = currentBtn.getAttribute('data-id');
       document.querySelector('#target-type').value = currentBtn.getAttribute('data-type');
       document.querySelector('#target-name').value = currentBtn.getAttribute('data-name');
@@ -212,26 +252,43 @@ const updateList = async () => {
 window.addEventListener('load', async (event) => {
   await updateList();
 
-  btnUploadPic.addEventListener('change', ()=>{
+  btnUploadNewPic.addEventListener('change', ()=>{
   
-    if(btnUploadPic.files && btnUploadPic.files[0]){
+    if(btnUploadNewPic.files && btnUploadNewPic.files[0]){
       // console.log(btnUploadPic.files);
         // FileList [ File ]
       // console.log(btnUploadPic.files[0]); 
         // File { name: "photo-736230.jpeg", lastModified: 1581556990000, webkitRelativePath: "", size: 27768, type: "image/jpeg" }
-      let img = document.querySelector('#new-itme-pic');
-      img.src = URL.createObjectURL(btnUploadPic.files[0]);    
-      console.log(img.src)
-      base64 = btnUploadPic.files[0].convertToBase64
+      let img = document.querySelector('#new-item-pic');
+      //img.src = URL.createObjectURL(btnUploadPic.files[0]);    
+      //console.log(img.src)
 
-      let result;
       let reader = new FileReader();
       reader.onloadend = function() {
-        result = reader.result
-        console.log('RESULT', reader.result) // data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD
-        
+        img.src = reader.result
       }
-      reader.readAsDataURL(btnUploadPic.files[0]);
+      reader.readAsDataURL(btnUploadNewPic.files[0]);
+    }
+  });
+
+
+  btnUploadTargetPic.addEventListener('change', ()=>{
+  
+    if(btnUploadTargetPic.files && btnUploadTargetPic.files[0]){
+      // console.log(btnUploadPic.files);
+        // FileList [ File ]
+      // console.log(btnUploadPic.files[0]); 
+        // File { name: "photo-736230.jpeg", lastModified: 1581556990000, webkitRelativePath: "", size: 27768, type: "image/jpeg" }
+      
+      let img = document.querySelector('#target-item-pic');
+
+      let reader = new FileReader();
+      reader.onloadend = function() {
+        // result = reader.result
+        // console.log('RESULT', reader.result) // data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD
+        img.src = reader.result
+      }
+      reader.readAsDataURL(btnUploadTargetPic.files[0]);
     }
   });
   
@@ -257,10 +314,11 @@ window.addEventListener('load', async (event) => {
         product_type: document.getElementById('entry-type').value,
         product_name: document.getElementById('entry-name').value,
         product_quantity: document.getElementById('entry-qty').value,
+        product_image: document.getElementById('new-item-pic').src
     }
 
-    await createAnItem(req).then(res => {
-        console.log(res);
+    await createAnItem(req).then(res=>{
+      console.log(res);
     });
 
     await updateList();
@@ -273,6 +331,7 @@ window.addEventListener('load', async (event) => {
         product_type: document.getElementById('target-type').value,
         product_name: document.getElementById('target-name').value,
         product_quantity: document.getElementById('target-qty').value,
+        product_image: document.getElementById('target-item-pic').src
     }
 
     await updateAnItem(req).then(res => {

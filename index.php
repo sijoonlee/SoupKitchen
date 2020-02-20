@@ -34,24 +34,36 @@ $router->get('/history', function() {
 $router->get('/products',function(){       
     return ProductController::read();
 }); 
-$router->get('/products/create',function(){       
-    return ProductController::create();
-}); 
-$router->get('/products/edit',function(){        
+// $router->get('/products/create',function(){       
+//     return ProductController::create();
+// }); 
+$router->get('/products/edit',function(){       
     return ProductController::edit();
 }); 
-$router->get('/products/delete',function(){       
-    return ProductController::destroy();
+
+$router->post('/products/delete',function($request){       
+    $data = $request->getBody();
+    return ProductController::deleteAnProduct($data["product_id"]);
 }); 
 
-$router->post('/products/updateQty', function($request){  
-  $data = json_encode($request->getBody());  
-  return ProductController::updateQty($data);
- 
- }); 
+$router->post('/products/updateAnItem',function($request){
+  $data = $request->getBody();
+  return ProductController::updateAnProduct($data["product_id"], $data);
+}); 
+
+// No longer used from Frontend
+// $router->post('/products/updateQty', function($request){  
+//   $data = json_encode($request->getBody());  
+//   return ProductController::updateQty($data);
+//  }); 
+
 $router->post('/products/create', function($request) {
   // ProductController::test();
   // return json_encode($request->getBody());
-  $data = json_encode($request->getBody());  
-  return ProductController::updateQty($data);
+  return ProductController::create($request->getBody());
 });
+
+$router->post('/products/findById',function($request){     
+  $id = $request->getBody()["product_id"];  
+  return ProductController::findAProductById($id);
+}); 

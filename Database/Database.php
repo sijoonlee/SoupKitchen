@@ -24,12 +24,17 @@ class Database
         $sql = "SELECT * FROM $tableName";
         $result = $this->conn->query($sql);
         $rows = array();
+
+        if ($result === false)
+            return array("success"=>false);
+        
         if ($result->num_rows > 0) {            
             while($row = $result->fetch_assoc()) {
                 $rows[] = $row;
             }
-        } 
-        return json_encode($rows);
+            return $rows;
+        } else
+            return array();       
     }
 
     /*-----------FUNCTIONS WE NEED----------------------*/     
@@ -38,7 +43,7 @@ class Database
     // SELECT (column name) FROM (table name)
     // SELECT (column name) FROM (table name) WHERE (where condition)
 
-     function selectColsFromWhere($cols = array(), $tableName, $where)
+    function selectColsFromWhere($cols = array(), $tableName, $where)
     {
         for($index = 0; $index<$cols.length();$index++){
             $columns+=$cols[$index] . ", ";
@@ -52,44 +57,93 @@ class Database
                 return $row["field"];
             }
         } else {
-            echo "0 results";
+            return array("success"=>false);
         }
     }
     
+
+    function findAProductById($tableName, $id)
+    {
+        $stmt = $this->conn->prepare("SELECT product_type, product_name, product_quantity, product_image FROM $tableName WHERE product_id = ?");
+        $stmt->bind_param("s", $id);
+        $stmt->bind_result($product_type, $product_name, $product_quantity, $product_image);
+        if($stmt->execute())
+        {
+            $row = $stmt->fetch();
+            if($row === null)
+                return array();
+            else
+                return array("product_type"=>$product_type, "product_name"=>$product_name, "product_quantity"=>$product_quantity, "product_image"=>$product_image);
+        }
+        else 
+            return array("success"=>false);
+    }
+
     /*---------------INSERTS----------------------------*/ 
     // INSERT INTO (table name) VALUES (values array)
+    function insertNewProduct($tableName, $newRecord)
+    {
+        $stmt = $this->conn->prepare("
+            INSERT INTO $tableName (product_id, product_name, product_quantity, product_type, product_image)
+                VALUES(?, ?, ?, ?, ?); ");
+        $stmt->bind_param("ssiss", 
+            $newRecord["product_id"], 
+            $newRecord["product_name"], 
+            $newRecord["product_quantity"],
+            $newRecord["product_type"],
+            $newRecord["product_image"]
+        );
+        try
+        {
+            if (!$stmt->execute())
+            {
+                throw new Exception("Failed to insert new record", 69);
+            }
+        }
+        catch (Exception $ex)
+        {
+            // $errMsg = "Error #" . $ex->getCode() . ": " . $ex->getMessage();
+            $msg = array("success" => false);
+        }
+        $msg = array("success" => true);
+        return $msg;
+    }
+
 
     /*---------------UPDATES----------------------------*/ 
     // UPDATE (table name) SET (column Name) = (new value) WHERE (where condition)
 
-     function updateQty($productID,$newQty)
-    {
-        $sql = "UPDATE products
-                SET product_quantity=$newQty
-                WHERE product_id='$productID'";       
-        if ($this->conn->query($sql) === TRUE) {
-            echo "Record Updated";
-        } else {
-            echo "Error updating record: " . $conn->error;
-        }        
-    }
+    //  function updateQty($productID,$newQty)
+    // {
+    //     $sql = "UPDATE Products
+    //             SET product_quantity=$newQty
+    //             WHERE product_id='$productID'";       
+    //     if ($this->conn->query($sql) === TRUE) {
+    //         echo "Record Updated";
+    //     } else {
+    //         echo "Error updating record: " . $conn->error;
+    //     }        
+    // }
 
     //Data order: ID, TYPE, NAME, QUANTITY
     function updateProducts($oldID , $data = array()){
-        $sql = "UPDATE products
-                SET 
-                product_id= '". $data["product_id"].
-               "', product_type= '" .$data["product_type"].
-               "', product_name= '" . $data["product_name"].
-               "', product_quantity= " . $data["product_quantity"].
-               ", product_image= '" . $data["product_image"].
-               "' WHERE product_id='$oldID'";
-        var_dump($sql);
-
+        $sql = "UPDATE Products
+                SET " .
+                (isset($data["product_id"]) ? "product_id= '" . $data["product_id"] . "'," : "") .
+                (isset($data["product_type"]) ? "product_type= '" . $data["product_type"] . "'," : "") .
+                (isset($data["product_name"]) ? "product_name= '" . $data["product_name"] . "'," : "") .
+                (isset($data["product_quantity"]) ? "product_quantity= '" . $data["product_quantity"] . "'," : "") .
+                (isset($data["product_image"]) ? "product_image= '" . $data["product_image"] . "'," : "");
+        $sql = rtrim($sql, ","); // delete unnecesarry comma at the end
+        $sql = $sql . " WHERE product_id='$oldID'";
+       
             if ($this->conn->query($sql) === TRUE) {
-                return 1;
+                $data["success"] = true;
+                return $data;
             } else {
-                return 0;
+                // var_dump($sql);
+                // var_dump($this->conn);
+                return array("success"=>false);
             }  
 
     }
@@ -97,7 +151,22 @@ class Database
 
     /*---------------DELETES----------------------------*/ 
     // DELETE FROM (table name) WHERE (where condition)
-    
+    function deleteAnProductById($tableName, $id)
+    {
+        $stmt = $this->conn->prepare("DELETE FROM $tableName WHERE product_id = ?");
+
+        $stmt->bind_param('s', $id);
+        
+        if($stmt->execute())
+            array("success"=>true);
+        else
+            array("success"=>false);
+    }
+
+
+
+
+
     function disconnect(){
         mysqli_close($this->conn);
     }

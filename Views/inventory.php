@@ -48,11 +48,11 @@
                 <div class="flex-wrapper full-height full-width">
                     <div class="record-entry-wrapper">
                         <div class="record picture">
-                            <img id ="new-itme-pic" class="entry pic"/>
+                            <img id ="new-item-pic" class="entry pic"/>
                         </div>
                         <div class="record btn-upload">
                             <div class="flex-wrapper row center secondary-center full-width full-height">
-                                <input type="file" id="btn-upload-pic"/>
+                                <input type="file" id="btn-upload-new-pic"/>
                             </div>
                         </div>
                         <div class="record id">
@@ -100,17 +100,19 @@
                 <div class="flex-wrapper full-height full-width">
                     <div class="record-entry-wrapper">
                         <div class="record picture">
-                            <div class="entry pic"></div>
+                            <div class="entry pic">
+                                <img id ="target-item-pic" class="entry pic"/>
+                            </div>
                         </div>
                         <div class="record btn-upload">
                             <div class="flex-wrapper row center secondary-center full-width full-height">
-                                <button>Upload</button>
+                                <input type="file" id="btn-upload-target-pic"/>
                             </div>
                         </div>
                         <div class="record id">
                             <div class="flex-wrapper row flex-start secondary-center full-width full-height">
                                 <div class="label id">Id</div>
-                                <input class="entry id" id="target-id"/>
+                                <input class="entry id" id="target-id" readonly/>
                             </div>
                         </div>
                         <div class="record type">
