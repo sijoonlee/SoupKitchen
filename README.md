@@ -1,6 +1,10 @@
 # SoupKitchen
 SoupKitchenGroupProject
 
+<p align ="center"> 
+  <img src = "https://github.com/Rhatcher94/SoupKitchen/raw/master/crud.gif" width = "400"/> 
+</p>  
+  
 ## About
 - A Group project done collaboratively by Computer Programming students at St.Lawrence College.
 
@@ -14,7 +18,6 @@ SoupKitchenGroupProject
 ## Future Features
 - User system
 - Shipping Section
-
 
 ## Contributors
 - Rob Hatcher
