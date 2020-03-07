@@ -1,8 +1,6 @@
-# SoupKitchen
-SoupKitchenGroupProject
-
+# Soup Kitchen Group Project
 <p align ="center"> 
-  <img src = "https://github.com/Rhatcher94/SoupKitchen/raw/master/crud.gif" width = "400"/> 
+  <img src = "https://github.com/Rhatcher94/SoupKitchen/raw/master/crud.gif" width = "500"/> 
 </p>  
   
 ## About
@@ -18,6 +16,7 @@ SoupKitchenGroupProject
 ## Future Features
 - User system
 - Shipping Section
+- Fix bugs
 
 ## Contributors
 - Rob Hatcher
