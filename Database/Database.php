@@ -57,7 +57,7 @@ class Database
                 return $row["field"];
             }
         } else {
-            return array("success"=>false);
+            return array("success"=>false);                                                                                                                                                                               
         }
     }
     
@@ -158,14 +158,10 @@ class Database
         $stmt->bind_param('s', $id);
         
         if($stmt->execute())
-            array("success"=>true);
+            return array("success"=>true);
         else
-            array("success"=>false);
+            return array("success"=>false);
     }
-
-
-
-
 
     function disconnect(){
         mysqli_close($this->conn);
