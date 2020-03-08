@@ -10,8 +10,8 @@
 - CRUD inventory system
 - MySQL integration
 - SCSS Styling
-- PHP backend
-- Javascript/HTML Front end
+- PHP backend ; multiple routes for CRUD operations
+- Javascript/HTML Front end ; fetch() method to communicate with the backend 
 
 ## Future Features
 - User system
